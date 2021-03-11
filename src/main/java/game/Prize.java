@@ -24,25 +24,15 @@
 *	- display(hidden):	show all attributes of the Prize object on screen
 */
 
-package src.main.java.game;
+package game;
 
 public abstract class Prize{
-	private int PrizeNbr;
 	private int xCoordinate;
 	private int yCoordinate;
 	private int PrizeValue;
 	private boolean Prizestatus;
 
 	/*-------------------------Getter function-------------------------*/
-	/*
-	getNbr:
-	Pre-cond: none
-	Post-cond: return the identity number of Prize object
-	*/
-	protected int getNbr(){
-		return this.PrizeNbr;
-	}
-
 	/*
 	getPosition:
 	Pre-cond: none
@@ -74,20 +64,6 @@ public abstract class Prize{
 	}
 	
 	/*-------------------------Setter function-------------------------*/
-	/*
-	setNbr:
-	Pre-cond: requires the identity number for Prize object
-	Post-cond: update the identity number of the Prize object 
-		return true if success, false otherwise
-	*/
-	protected boolean setNbr(int pNbr){
-		this.PrizeNbr = pNbr;
-		if(this.PrizeNbr != pNbr){
-			return false;
-		}
-		return true;
-	}
-
 	/*
 	setPosition:
 	Pre-cond: requires a pair of cooridnate x and y
