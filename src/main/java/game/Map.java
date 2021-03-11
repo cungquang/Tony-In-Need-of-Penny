@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 
 public class Map extends JPanel {
-    String[][] level = {{"*","*","*","*","*","*","*","*","*","*", "*","*","*","*","*","*","*","*","*","*"},
+    String[][] level = {{"*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*"},
                         {"*","","","","","","","","","","","","","*","","","","","","s"},
                         {"*","","","","","","","","","","","","","*","","*","*","*","*","*"},
                         {"*","","","","","","","","","","","","","*","","*","","","","*"},
@@ -20,6 +20,10 @@ public class Map extends JPanel {
 
     public Map() {
 
+    }
+
+    public String getLocation(String x, String y) {
+        return level[y][x];
     }
 
     public void paintComponent(Graphics g) {
