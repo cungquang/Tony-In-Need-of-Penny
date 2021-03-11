@@ -2,19 +2,16 @@
 /**
 *	Reward class: this is the concrete product of Prize class
 *	- Inheritted attribute from Prize:
-*		+ int PrizeNbr;
 *		+ int xCoordinate;
 *		+ int yCoordinate;
 *		+ int PrizeValue;
 *		+ boolean Prizestatus;
 *
 *	- Inheritted methods from Prize:
-*		+ getNbr():			return identity of the Prize object
 *		+ getPosition():	return the current position of the Prize object
 * 		+ getValue():		return the value of the Prize object
 *		+ getStatus():		return the current status of the Prize object
 *
-*		+ setNbr():			set the identity number fo the Prize object
 *		+ setPosition: 		set the position for the Prize object
 *		+ setValue():		set the value for the Prize object
 *		+ setStatus(): 		set the current status for the Prize object
@@ -31,13 +28,14 @@
 *		+ rewardStatus(): 		interface that return the current status of the Reward object
 * 		+ rewardSetState():		interface that return the new status of the Reward object
 */
-package game;
+package prize;
 
-import game.Prize;
+import prize.Prize;
 
 public class Reward extends Prize{
 	private int rNbr = 2;
 
+	/*-------------------------Constructor-------------------------*/
 	/*
 	Reward():
 	Pre-cond: requires nbr(identity number - integer), dx(coordinate x-axis - integer),
@@ -51,6 +49,7 @@ public class Reward extends Prize{
 		this.setStatus(1);
 	}
 
+	/*-------------------------Getter function-------------------------*/
 	/*
 	rewardNbr():
 	Pre-cond: none
@@ -96,6 +95,7 @@ public class Reward extends Prize{
 		return this.getStatus();
 	}
 
+	/*-------------------------Setter function-------------------------*/
 	/*
 	rewardSetState();
 	Pre-cond: requires the new state of the Reward object

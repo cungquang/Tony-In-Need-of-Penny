@@ -1,22 +1,16 @@
 
 /**
 *	Abstract class: 
-*	- PrizeNbr (integer): 		identity number for each Prize 
-*		+ normPrize - start with 10_
-*		+ Bonus - start with 11_
-*	- xCoordinate (integer): 	the coordination of a Prize on x-axis
-*	- yCoordinate (integer): 	the coordination of a Prize on y-axis
-*	- PrizeValue (int):	 		value of the Prize
-*	- PrizeShape (char): 		the shape of Prize in form of character - will be displayed on screen
-*	- status (boolean): 		use to check status of the Prize - 1 is still exist, 0 otherwise
+*	- int xCoordinate: 		the coordination of a Prize on x-axis
+*	- int yCoordinate: 		the coordination of a Prize on y-axis
+*	- int PrizeValue:	 	value of the Prize
+*	- boolean status: 		the current status the Prize - True is still exist, Flase otherwise
 *	
 *	method:
-*	- getNbr():			return identity of the Prize object
 *	- getPosition():	return the current position of the Prize object
 * 	- getValue():		return the value of the Prize object
 *	- getStatus():		return the current status of the Prize object
 *	
-*	- setNbr():			set the identity number fo the Prize object
 *	- setPosition: 		set the position for the Prize object
 *	- setValue():		set the value for the Prize object
 *	- setStatus(): 		set the current status for the Prize object
@@ -24,7 +18,7 @@
 *	- display(hidden):	show all attributes of the Prize object on screen
 */
 
-package game;
+package prize;
 
 public abstract class Prize{
 	private int xCoordinate;

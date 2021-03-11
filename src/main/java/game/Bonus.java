@@ -2,19 +2,16 @@
 /**
 *	Bonus class: this is the concrete product of Prize class
 *	- Inheritted attribute from Prize:
-*		+ int PrizeNbr;
 *		+ int xCoordinate;
 *		+ int yCoordinate;
 *		+ int PrizeValue;
 *		+ boolean Prizestatus;
 *
 *	- Inheritted methods from Prize:
-*		+ getNbr():			return identity of the Prize object
 *		+ getPosition():	return the current position of the Prize object
 * 		+ getValue():		return the value of the Prize object
 *		+ getStatus():		return the current status of the Prize object
 *
-*		+ setNbr():			set the identity number fo the Prize object
 *		+ setPosition: 		set the position for the Prize object
 *		+ setValue():		set the value for the Prize object
 *		+ setStatus(): 		set the current status for the Prize object
@@ -27,17 +24,18 @@
 *		+ BonusNbr():			interface that return the identity of the Bonus object
 *		+ BonusXCoordinate():	interface that return X coordinate of the Bonus object
 *		+ BonusYCoordinate(): 	interface that return Y coordinate of the Bonus object
-*		+ BonusValue():		interface that return the value of the Bonus object
+*		+ BonusValue():			interface that return the value of the Bonus object
 *		+ BonusStatus(): 		interface that return the current status of the Bonus object
 * 		+ BonusSetState():		interface that return the new status of the Bonus object
 */
-package game;
+package prize;
 
-import game.Prize;
+import prize.Prize;
 
 public class Bonus extends Prize{
 	private int bNbr = 3;
 
+	/*-------------------------Constructor-------------------------*/
 	/*
 	Bonus():
 	Pre-cond: requires nbr(identity number - integer), dx(coordinate x-axis - integer),
@@ -51,6 +49,7 @@ public class Bonus extends Prize{
 		this.setStatus(1);
 	}
 
+	/*-------------------------Getter function-------------------------*/
 	/*
 	BonusNbr():
 	Pre-cond: none
@@ -96,6 +95,7 @@ public class Bonus extends Prize{
 		return this.getStatus();
 	}
 
+	/*-------------------------Setter function-------------------------*/
 	/*
 	BonusSetState();
 	Pre-cond: requires the new state of the Bonus object
