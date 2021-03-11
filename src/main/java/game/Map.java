@@ -22,7 +22,7 @@ public class Map extends JPanel {
 
     }
 
-    public String getLocation(String x, String y) {
+    public String getLocation(int x, int y) {
         return level[y][x];
     }
 
