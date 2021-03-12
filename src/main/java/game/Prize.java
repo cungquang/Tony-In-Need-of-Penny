@@ -1,68 +1,93 @@
 
 /**
 *	Abstract class: 
+*	- int Nbr
 *	- int xCoordinate: 		the coordination of a Prize on x-axis
 *	- int yCoordinate: 		the coordination of a Prize on y-axis
 *	- int PrizeValue:	 	value of the Prize
 *	- boolean status: 		the current status the Prize - True is still exist, Flase otherwise
 *	
 *	method:
-*	- getPosition():	return the current position of the Prize object
-* 	- getValue():		return the value of the Prize object
-*	- getStatus():		return the current status of the Prize object
+*	+ getNbr(): 		return the identity number of Prize object
+*	+ getPosition():	return the current position of the Prize object
+* 	+ getValue():		return the value of the Prize object
+*	+ getStatus():		return the current status of the Prize object
 *	
+*	- setNbr():			set the identity number of the Prize object
 *	- setPosition: 		set the position for the Prize object
 *	- setValue():		set the value for the Prize object
 *	- setStatus(): 		set the current status for the Prize object
 *
-*	- display(hidden):	show all attributes of the Prize object on screen
 */
 
 package prize;
 
 public abstract class Prize{
+	private int Nbr;
 	private int xCoordinate;
 	private int yCoordinate;
 	private int PrizeValue;
-	private boolean Prizestatus;
+	private boolean PrizeStatus;
 
 	/*-------------------------Getter function-------------------------*/
 	/*
-	getPosition:
+	getNbr():
 	Pre-cond: none
-	Post-cond: return current position of Prize object
+	Post-cond: return the identity of the Prize object
 	*/
-	protected int[] getPosition(){
+	public int getNbr(){
+		return this.Nbr;
+	}
+
+	/*
+	getPosition():
+	Pre-cond: none
+	Post-cond: return the current X coordinate of the Prize object
+	*/
+	public int[] getPosition(){
 		int[] position = new int[2];
-		position[0] = xCoordinate;
-		position[1] = yCoordinate;
+		position[0] = this.xCoordinate;
+		position[1] = this.yCoordinate;
 		return position;
 	}
 
 	/*
-	getValue:
+	getValue():
 	Pre-cond: none
 	Post-cond: return the value of the Prize object
 	*/
-	protected int getValue(){
+	public int getValue(){
 		return this.PrizeValue;
 	}
 
 	/*
-	getStatus:
+	getStatus():
 	Pre-cond: none
-	Post-cond: return the current status of Prize object
+	Post-cond: return the current status of the Prize object
 	*/
-	protected boolean getStatus(){
-		return this.Prizestatus;
+	public boolean getStatus(){
+		return this.PrizeStatus;
 	}
 	
 	/*-------------------------Setter function-------------------------*/
 	/*
+	setNbr():
+	Pre-cond: require idenity Nbr
+	Post-cond: return the true if success, false otherwise
+	*/
+	protected boolean setNbr(int nBr){
+		this.Nbr = nBr;
+		if(this.Nbr != nBr){
+			return false;
+		}
+		return true;
+	}
+
+	/*
 	setPosition:
 	Pre-cond: requires a pair of cooridnate x and y
 	Post-cond: update the coordinate of the Prize object
-		return true if success false otherwise
+		return true if success, false otherwise
 	*/
 	protected boolean setPosition(int x, int y){
 		this.xCoordinate = x;
@@ -94,27 +119,13 @@ public abstract class Prize{
 		return true if success, false otherwise
 	*/
 	protected boolean setStatus(boolean updateStatus){
-		this.Prizestatus = updateStatus;
-		if(this.Prizestatus != updateStatus){
+		this.PrizeStatus = updateStatus;
+		if(this.PrizeStatus != updateStatus){
 			return false;
 		}
 		return true;
 	}
 
-	// /*
-	// Display function:
-	// Pre-cond: none
-	// Post-cond: print the information of Prize object into stdout
-	// */
-	// public void display(){
-	// 	String temp = "Nbr: " + this.PrizeNbr + "\n";
-	// 	temp += "x-" + this.xCoordinate + "\n";
-	// 	temp += "y-" + this.yCoordinate + "\n";
-	// 	temp += "prize-" + this.PrizeValue + "\n";
-	// 	temp += "shape-" + this.PrizeShape + "\n";
-	// 	temp += "status-" + this.status + "\n";
-	// 	System.out.println(temp);
-	// }
 }
 
 
