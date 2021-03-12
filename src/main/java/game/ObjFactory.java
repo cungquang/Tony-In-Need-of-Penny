@@ -11,7 +11,7 @@ package prize;
 import prize.Prize;
 import prize.Reward;
 import prize.Bonus;
-import prize.ObjectType;
+import prize.ObjType;
 
 public class ObjFactory{
 
@@ -21,7 +21,7 @@ public class ObjFactory{
 	Pre-cond: requires object type to identify the product need to produce
 	Post-cond: return an object match the objec type
 	*/
-	Prize createPrize(ObjectType objtype, int dx, int dy, int value){
+	Prize createPrize(ObjType objtype, int dx, int dy, int value){
 		switch(objtype){
 			case reward:
 				return new Reward(dx, dy, value);
