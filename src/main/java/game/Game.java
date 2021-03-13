@@ -1,11 +1,16 @@
 package game;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 import java.awt.EventQueue;
 
 import game.Map;
 
 public class Game extends JFrame {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     public Game() {
 
     }

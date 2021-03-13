@@ -6,6 +6,10 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 
 public class Map extends JPanel {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     String[][] level = {{"*","*","*","*","*","*","*","*","*","*", "*","*","*","*","*","*","*","*","*","*"},
                         {"*","","","","","","","","","","","","","*","","","","","","s"},
                         {"*","","","","","","","","","","","","","*","","*","*","*","*","*"},
