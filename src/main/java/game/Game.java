@@ -15,7 +15,7 @@ public class Game extends JFrame {
         j.setDefaultCloseOperation(EXIT_ON_CLOSE);
         Map gameMap = new Map();
         j.add(gameMap);
-        j.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        j.setExtendedState(JFrame.MAXIMIZED_BOTH);
         j.setVisible(true);
     }
 }
