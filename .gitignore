@@ -1,2 +1,4 @@
 target/
 *.class
+src/main/java/game/.vscode/
+
