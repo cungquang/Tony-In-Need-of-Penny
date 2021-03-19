@@ -15,15 +15,14 @@ class Character extends activeObj {
     private boolean Is_Bonus = false;
 
     //Is Collision
-    public void MovingEnemy_Collision(Map m) {
-
+    public void MovingEnemy_Collision(Eneposition e) {
+        if(e.getX() == MC.getdX() && e.getY() == MC.getdY())
+        {
             IsAlive = false;
+        }
     }
 
-    public void stillEnemy_Collision(Map m) {
-        IsAlive = false;
 
-    }
     public void Reward_Collision(Prize p)
     {
         int x = p.getPosition()[0];
