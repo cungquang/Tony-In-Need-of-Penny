@@ -1,6 +1,6 @@
-package prize;
+package game;
 
-import prize.ObjFactory;
+import game.ObjFactory;
 
 public class UseFactory{
 	public static void main(String[] args){

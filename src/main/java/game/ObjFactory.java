@@ -6,12 +6,9 @@
 *		- method - createPrize:
 */
 
-package prize;
+package game;
 
-import prize.Prize;
-import prize.Reward;
-import prize.Bonus;
-import prize.ObjType;
+import game.*;
 
 public class ObjFactory{
 

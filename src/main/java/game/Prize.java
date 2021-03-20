@@ -20,7 +20,7 @@
 *
 */
 
-package prize;
+package game;
 
 public abstract class Prize{
 	private int Nbr;
