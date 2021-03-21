@@ -15,15 +15,13 @@ class Character extends activeObj {
     private boolean Is_Bonus = false;
 
     //Is Collision
-    public void MovingEnemy_Collision(Map m) {
-
+    public void MovingEnemy_Collision(Eneposition e) {
+        if(e.getX() == MC.getdX() && e.getY() == MC.getdY())
+        {
             IsAlive = false;
+        }
     }
 
-    public void stillEnemy_Collision(Map m) {
-        IsAlive = false;
-
-    }
     public void Reward_Collision(Prize p)
     {
         int x = p.getPosition()[0];
@@ -48,29 +46,29 @@ class Character extends activeObj {
         if (k == KeyEvent.VK_LEFT)
         {
             // Wall collision detection
-            if (m.MapGetter(MC.getdX()-1, MC.getdY()) == "*")
-                MC.setdX(0);
+            if (m.getLocation(MC.getdX()-1, MC.getdY()) == "1")
+                return;
             else {
                 MC.setdX(-1);
             }
         }
         else if (k == KeyEvent.VK_RIGHT) {
-            if (m.MapGetter(MC.getdX()+1, MC.getdY()) == "*")
-                MC.setdX(0);
+            if (m.getLocation(MC.getdX()+1, MC.getdY()) == "1")
+                return;
             else {
                 MC.setdX(1);
             }
         }
         else if (k == KeyEvent.VK_DOWN) {
-            if (m.MapGetter(MC.getdX(), MC.getdY()-1) == "*")
-                MC.setdX(0);
+            if (m.getLocation(MC.getdX(), MC.getdY()-1) == "1")
+                return;
             else {
                 MC.setdY(-1);
             }
         }
         else if (k == KeyEvent.VK_UP) {
-            if (m.MapGetter(MC.getdX(), MC.getdY()+1) == "*")
-                MC.setdX(0);
+            if (m.getLocation(MC.getdX(), MC.getdY()+1) == "1")
+                return;
             else {
                 MC.setdY(1);
             }
