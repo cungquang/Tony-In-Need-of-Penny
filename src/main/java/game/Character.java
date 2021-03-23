@@ -22,6 +22,7 @@ class Character extends activeObj {
         }
     }
 
+
     public void Reward_Collision(Prize p)
     {
         int x = p.getPosition()[0];
