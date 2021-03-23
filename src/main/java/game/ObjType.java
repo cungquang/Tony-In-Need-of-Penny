@@ -7,7 +7,7 @@
 *	4 - staticEnemy
 */
 
-package prize;
+package game;
 
 public enum ObjType{
 	reward,

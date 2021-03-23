@@ -18,9 +18,9 @@
 *		- setValue():		set the value for the Prize object
 *		- setStatus(): 		set the current status for the Prize object
 */
-package prize;
+package game;
 
-import prize.Prize;
+import game.Prize;
 
 public class Bonus extends prize.Prize{
 
