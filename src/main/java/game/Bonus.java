@@ -22,7 +22,7 @@ package game;
 
 import game.Prize;
 
-public class Bonus extends prize.Prize{
+public class Bonus extends game.Prize{
 
 	/*-------------------------Constructor-------------------------*/
 	/*
