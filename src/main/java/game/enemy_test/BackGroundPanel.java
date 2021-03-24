@@ -1,4 +1,4 @@
-package main.java.game.enemy_test;
+package game.enemy_test;
 
 
 import java.awt.Graphics;
