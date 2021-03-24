@@ -47,28 +47,28 @@ class Character extends activeObj {
         if (k == KeyEvent.VK_LEFT)
         {
             // Wall collision detection
-            if (m.getLocation(MC.getdX()-1, MC.getdY()) == "1")
+            if (m.getLocation(MC.getdX()-1, MC.getdY()) == 1)
                 return;
             else {
                 MC.setdX(-1);
             }
         }
         else if (k == KeyEvent.VK_RIGHT) {
-            if (m.getLocation(MC.getdX()+1, MC.getdY()) == "1")
+            if (m.getLocation(MC.getdX()+1, MC.getdY()) == 1)
                 return;
             else {
                 MC.setdX(1);
             }
         }
         else if (k == KeyEvent.VK_DOWN) {
-            if (m.getLocation(MC.getdX(), MC.getdY()-1) == "1")
+            if (m.getLocation(MC.getdX(), MC.getdY()-1) == 1)
                 return;
             else {
                 MC.setdY(-1);
             }
         }
         else if (k == KeyEvent.VK_UP) {
-            if (m.getLocation(MC.getdX(), MC.getdY()+1) == "1")
+            if (m.getLocation(MC.getdX(), MC.getdY()+1) == 1)
                 return;
             else {
                 MC.setdY(1);
