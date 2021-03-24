@@ -1,11 +1,11 @@
-package main.java.game.enemy_test;
+package game.enemy_test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import java.lang.*;
-import main.java.game.enemy_test.MyPanel;
-import main.java.game.enemy_test.Eneposition;
+import game.enemy_test.MyPanel;
+import game.enemy_test.Eneposition;
 
 public class AutiFindWay {
     public static Eneposition beginEne = null;

@@ -1,6 +1,6 @@
-package main.java.game.enemy_test;
+package game.enemy_test;
 
-import main.java.game.enemy_test.MyPanel;
+import game.enemy_test.MyPanel;
 
 public class Eneposition {
     public Eneposition(){}
@@ -22,8 +22,8 @@ public class Eneposition {
     }
     
     static public final int size = 25;
-	private int x;//x position of the enemy
-	private int y;//y position of the enemy
+	public int x;//x position of the enemy
+	public int y;//y position of the enemy
 	private int F;
 	private int G;
 	private int H;
