@@ -15,7 +15,7 @@ import game.enemy_test.AutiFindWay;
 import game.enemy_test.Eneposition;
 import game.enemy_test.MyPanel;
 
-public class BasePanel extends JFrame{
+public class Enemy_test_main extends JFrame{
     private static final long serialVersionUID = 1L;
 	private static int beginX = 0;//jframe的x坐标
 	private static int beginY = 0;//jframe的y坐标
@@ -41,7 +41,7 @@ public class BasePanel extends JFrame{
 	public static List<Eneposition> closedList = new ArrayList<>();
 	public static List<Eneposition> openList = new ArrayList<>();
     
-    public BasePanel(){
+    public Enemy_test_main(){
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(null);
@@ -125,7 +125,7 @@ public class BasePanel extends JFrame{
 	
 	public static void main(String[] args) throws InterruptedException {
 		getZhangAiList();
-		BasePanel bp = new BasePanel();
+		Enemy_test_main bp  = new Enemy_test_main();
 		AutiFindWay afw = new AutiFindWay();
 		List<Eneposition> wayList = afw.getWayLine(cat, fish);
 		bp.movePanel(wayList);
@@ -178,6 +178,7 @@ public class BasePanel extends JFrame{
 			
 		}
 		System.out.println("寻路结束！");
+		punishment p = new punishment();
 	}
 	
 	public static void getZhangAiList(){

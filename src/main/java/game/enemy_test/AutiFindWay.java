@@ -33,10 +33,10 @@ public class AutiFindWay {
             return waitList;
         }
 
-        BasePanel.openList.addAll(tempList);
-        for (int i = 0; i < BasePanel.openList.size(); i++) {
+        Enemy_test_main.openList.addAll(tempList);
+        for (int i = 0; i < Enemy_test_main.openList.size(); i++) {
 
-            Eneposition temp = BasePanel.openList.get(i);
+            Eneposition temp = Enemy_test_main.openList.get(i);
             tempList = around(temp);
             if (tempList == null || tempList.size() == 0) {
                 continue;
@@ -44,7 +44,7 @@ public class AutiFindWay {
             if (tempList.contains(endEne)) {
                 for (Eneposition obj : tempList) {
                     if (obj.equals(endEne)) {
-                        BasePanel.closedList.add(obj);
+                        Enemy_test_main.closedList.add(obj);
                         break;
                     }
                 }
@@ -52,10 +52,10 @@ public class AutiFindWay {
 
             }
             for (Eneposition fk : tempList) {
-                if (BasePanel.openList.contains(fk)) {
+                if (Enemy_test_main.openList.contains(fk)) {
 
 
-                    for (Eneposition openFk : BasePanel.openList) {
+                    for (Eneposition openFk : Enemy_test_main.openList) {
                         if (openFk.equals(fk)) {
                             if (openFk.getG() > fk.getG()) {
                                 openFk.setG(fk.getG());
@@ -69,34 +69,34 @@ public class AutiFindWay {
                         }
                     }
                 } else {
-                    BasePanel.openList.add(fk);
+                    Enemy_test_main.openList.add(fk);
                 }
             }
             // System.out.println("all
             // fail--------------------------------------------------------------------------------------------"+i);
 
-            BasePanel.openList.remove(i);
+            Enemy_test_main.openList.remove(i);
             i--;
 
         }
 
-        for (int i = 0; i < BasePanel.closedList.size(); i++) {
+        for (int i = 0; i < Enemy_test_main.closedList.size(); i++) {
             if (waitList.size() > 0) {
-                if (waitList.get(waitList.size() - 1).getPreviousFK().equals(BasePanel.closedList.get(i))) {
-                    waitList.add(BasePanel.closedList.get(i));
-                    if (BasePanel.closedList.get(i).equals(beginEne)) {
+                if (waitList.get(waitList.size() - 1).getPreviousFK().equals(Enemy_test_main.closedList.get(i))) {
+                    waitList.add(Enemy_test_main.closedList.get(i));
+                    if (Enemy_test_main.closedList.get(i).equals(beginEne)) {
                         break;
                     }
-                    BasePanel.closedList.remove(BasePanel.closedList.get(i));
+                    Enemy_test_main.closedList.remove(Enemy_test_main.closedList.get(i));
                     i = -1;
 
                 }
                 continue;
             }
 
-            if(BasePanel.closedList.get(i).equals(endEne)){
-				waitList.add(BasePanel.closedList.get(i));
-				BasePanel.closedList.remove(BasePanel.closedList.get(i));
+            if(Enemy_test_main.closedList.get(i).equals(endEne)){
+				waitList.add(Enemy_test_main.closedList.get(i));
+				Enemy_test_main.closedList.remove(Enemy_test_main.closedList.get(i));
 				i = -1;
 				continue;
 			}
@@ -113,31 +113,31 @@ public class AutiFindWay {
         if (Enemy.getY() - 1 >= 0) {
 
             Eneposition tempPoistion = new Eneposition(Enemy.getX(), Enemy.getY() - 1, Enemy);
-            if (!BasePanel.zhangaiList.contains(tempPoistion) && !BasePanel.closedList.contains(tempPoistion)) {
+            if (!Enemy_test_main.zhangaiList.contains(tempPoistion) && !Enemy_test_main.closedList.contains(tempPoistion)) {
                 aroundList.add(tempPoistion);
             }
         }
 
-        if (Enemy.getY() + 1 <= BasePanel.heightLength) {
+        if (Enemy.getY() + 1 <= Enemy_test_main.heightLength) {
             Eneposition tempPoistion = new Eneposition(Enemy.getX(), Enemy.getY() + 1, Enemy);
-            if (!BasePanel.zhangaiList.contains(tempPoistion) && !BasePanel.closedList.contains(tempPoistion)) {
+            if (!Enemy_test_main.zhangaiList.contains(tempPoistion) && !Enemy_test_main.closedList.contains(tempPoistion)) {
                 aroundList.add(tempPoistion);
             }
         }
 
         if (Enemy.getX() - 1 >= 0) {
             Eneposition tempPoistion = new Eneposition(Enemy.getX()-1, Enemy.getY(), Enemy);
-            if (!BasePanel.zhangaiList.contains(tempPoistion) && !BasePanel.closedList.contains(tempPoistion)) {
+            if (!Enemy_test_main.zhangaiList.contains(tempPoistion) && !Enemy_test_main.closedList.contains(tempPoistion)) {
                 aroundList.add(tempPoistion);
             }
         }
-        if (Enemy.getX() + 1 <= BasePanel.heightLength) {
+        if (Enemy.getX() + 1 <= Enemy_test_main.heightLength) {
             Eneposition tempPoistion = new Eneposition(Enemy.getX()+1, Enemy.getY(), Enemy);
-            if (!BasePanel.zhangaiList.contains(tempPoistion) && !BasePanel.closedList.contains(tempPoistion)) {
+            if (!Enemy_test_main.zhangaiList.contains(tempPoistion) && !Enemy_test_main.closedList.contains(tempPoistion)) {
                 aroundList.add(tempPoistion);
             }
         }
-        BasePanel.closedList.add(Enemy);
+        Enemy_test_main.closedList.add(Enemy);
         getFGH(aroundList, Enemy);
         return aroundList;
     }
