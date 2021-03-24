@@ -5,18 +5,37 @@ import java.awt.event.KeyEvent;
 
 
 class Character extends activeObj {
-    //is MC alive
-    private Character MC;
+    private static Character MC = null;
     private int General_Score;
     private int Bonus_Score;
+//    is MC alive
     private boolean IsAlive = true;
 //    private boolean Is_Wall = false;
     private boolean Is_General_Reward = false;
     private boolean Is_Bonus = false;
 
+    private Character ()
+    {
+        this.setdX(0);
+        this.setdY(0);
+        this.General_Score = 0;
+        this.Bonus_Score = 0;
+        this.IsAlive = true;
+        this.Is_General_Reward = false;
+        this.Is_Bonus = false;
+    }
+    public static Character getInstance()
+    {
+        if (MC ==  null) {
+            MC == new Character();
+        }
+        return MC;
+
+    }
+
     //Is Collision
     public void MovingEnemy_Collision(Eneposition e) {
-        if(e.getX() == MC.getdX() && e.getY() == MC.getdY())
+        if(e.getX() == this.getdX() && e.getY() == this.getdY())
         {
             IsAlive = false;
         }
@@ -27,7 +46,7 @@ class Character extends activeObj {
     {
         int x = p.getPosition()[0];
         int y = p.getPosition()[1];
-        if(x == MC.getdX() && y == MC.getdY())
+        if(x == this.getdX() && y == this.getdY())
             Is_General_Reward = true;
         else
             Is_General_Reward = false;
@@ -36,7 +55,7 @@ class Character extends activeObj {
     {
         int x = b.getPosition()[0];
         int y = b.getPosition()[1];
-        if(x == MC.getdX() && y == MC.getdY())
+        if(x == this.getdX() && y == this.getdY())
             Is_Bonus = true;
         else
             Is_Bonus = false;
@@ -47,31 +66,31 @@ class Character extends activeObj {
         if (k == KeyEvent.VK_LEFT)
         {
             // Wall collision detection
-            if (m.getLocation(MC.getdX()-1, MC.getdY()) == 1)
+            if (m.getLocation(this.getdX()-1, this.getdY()) == 1)
                 return;
             else {
-                MC.setdX(-1);
+                this.setdX(-1);
             }
         }
         else if (k == KeyEvent.VK_RIGHT) {
-            if (m.getLocation(MC.getdX()+1, MC.getdY()) == 1)
+            if (m.getLocation(this.getdX()+1, this.getdY()) == 1)
                 return;
             else {
-                MC.setdX(1);
+                this.setdX(1);
             }
         }
         else if (k == KeyEvent.VK_DOWN) {
-            if (m.getLocation(MC.getdX(), MC.getdY()-1) == 1)
+            if (m.getLocation(this.getdX(), this.getdY()-1) == 1)
                 return;
             else {
-                MC.setdY(-1);
+                this.setdY(-1);
             }
         }
         else if (k == KeyEvent.VK_UP) {
-            if (m.getLocation(MC.getdX(), MC.getdY()+1) == 1)
+            if (m.getLocation(this.getdX(), this.getdY()+1) == 1)
                 return;
             else {
-                MC.setdY(1);
+                this.setdY(1);
             }
         }
     }
