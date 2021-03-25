@@ -5,10 +5,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+
+
+/**
+ *	Abstract class:
+        -private int Character_dx, Character_dy     :indicate the position on Map level
+ *	method:
+ *      -getdX()    :return the Character's X-coordinate
+ *      -getdY()    :return the Character's Y-coordinate
+ *      -setdX()    :Change the Character's X-coordinate
+ *      -setdY()    :Change the Character's Y-coordinate
+ *
+ */
+
+
 class activeObj extends KeyAdapter {
-    //private int Character_x,Character_y;
     private int Character_dx, Character_dy;
-    //private final int Speed = 6;
 
     public int getdX() {
         return Character_dx;
