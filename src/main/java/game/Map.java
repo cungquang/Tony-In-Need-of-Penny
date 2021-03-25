@@ -5,6 +5,17 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
 
+/**
+ * Map class: creates and draws the map
+ * 
+ * - int[][] level: contains the map data.
+ * 
+ * methods:
+ * + getLocation():     returns the object at the given location
+ * + setLocation():     sets the object at the given location
+ * + paintComponent():  swing method for drawing the components to the JPanel
+ * - drawWals():        draws the walls of the map and the rewards
+ */
 public class Map extends JPanel {
     private int[][] level = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                              {1,2,2,2,2,1,2,2,2,2,2,2,2,2,1,2,2,2,2,1},

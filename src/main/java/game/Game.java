@@ -5,6 +5,12 @@ import java.awt.EventQueue;
 
 import game.Map;
 
+/**
+ * Game Class: this is the class that contains the main function which starts the game.enemy_test
+ * 
+ * method:
+ * + main():        create map and start game.
+ */
 public class Game extends JFrame {
     public Game() {
 
