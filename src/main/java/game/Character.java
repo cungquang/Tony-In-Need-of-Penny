@@ -2,7 +2,27 @@ package game;
 
 import java.awt.event.KeyEvent;
 
-
+/**
+ * Character Class: create the Main Character
+ *  -Inheritted attribute from activeObj
+ *
+ *
+ *     -private static Character MC = null; Singleton pattern   :
+ *     -private int General_Score;                              :show the General Score
+ *     -private int Bonus_Score;                                :show the bonus Socre
+ *     -private boolean Is_General_Reward = false;              :judge the Collision of the General Reward
+ *     -private boolean Is_Bonus = false;                       :judge the Collision of the Bonus Reward
+ *     -private boolean IsAlive = true;                         :Is Main Character alive
+ *
+ *      method:
+ *      -public static Character getInstance()                  :make sure there is only one instance of Main Character
+ *      -public void MovingEnemy_Collision(Eneposition e)       :detect the Collision of the enemy
+ *      -public void Reward_Collision(Prize p)                  :detect the Collision of the General Reward
+ *      -public void Bonus_Collision(Bonus b)                   :detect the Collision of the Bonus Reward
+ *      public void KeyPressed(KeyEvent e, Map m)               :Control Main Character with keyboard
+ *
+ *
+ */
 
 class Character extends activeObj {
     private static Character MC = null;
@@ -10,7 +30,6 @@ class Character extends activeObj {
     private int Bonus_Score;
 //    is MC alive
     private boolean IsAlive = true;
-//    private boolean Is_Wall = false;
     private boolean Is_General_Reward = false;
     private boolean Is_Bonus = false;
 
@@ -46,6 +65,7 @@ class Character extends activeObj {
     {
         int x = p.getPosition()[0];
         int y = p.getPosition()[1];
+        //Reward collision detection
         if(x == this.getdX() && y == this.getdY())
             Is_General_Reward = true;
         else
@@ -55,6 +75,7 @@ class Character extends activeObj {
     {
         int x = b.getPosition()[0];
         int y = b.getPosition()[1];
+        // Bonus collision detection
         if(x == this.getdX() && y == this.getdY())
             Is_Bonus = true;
         else
