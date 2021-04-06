@@ -20,7 +20,6 @@
 */
 package game;
 
-import game.Prize;
 import java.awt.*;
 
 public class Reward extends game.Prize{
