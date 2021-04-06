@@ -30,6 +30,9 @@ public class Map extends JPanel {
     private Character player;
     private Wall wall;
 
+    private Prize bonus[];
+    private Prize reward[];
+
     private boolean playing = false;
     public static final int INTERVAL = 35;
 
@@ -54,6 +57,8 @@ public class Map extends JPanel {
                 playing = true;
                 if(e.getKeyCode() == KeyEvent.VK_LEFT) {
                     player.move('l');
+                            System.out.println("Bonus: " + wall.NoOfPrize()[0]);
+        System.out.println("Reward: " + wall.NoOfPrize()[1]);
                 } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     player.move('r');
                 } else if(e.getKeyCode() == KeyEvent.VK_UP) {
@@ -69,6 +74,8 @@ public class Map extends JPanel {
         wall = new Wall(MAP_WIDTH, MAP_HEIGHT, BLOCK_SIZE, NUM_BLOCKS);
         wall.reset();
         player = Character.getInstance(this);
+
+
 
         requestFocusInWindow();
         playing = false;

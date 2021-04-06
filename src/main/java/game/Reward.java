@@ -21,6 +21,7 @@
 package game;
 
 import game.Prize;
+import java.awt.*;
 
 public class Reward extends game.Prize{
 
@@ -37,6 +38,17 @@ public class Reward extends game.Prize{
 		this.setValue(value);
 		this.setStatus(true);
 	}
+
+
+	/*
+	draw():
+	Pre-cond: graphic
+	Post-cond: return the prize on the map
+	*/
+    public void draw(Graphics g) {
+        g.setColor(Color.BLUE);
+        g.fillOval(this.getPosition()[0] * 25 + 8, this.getPosition()[1] * 25 + 8,11,11);
+    }
 
 	/*-------------------------Setter function-------------------------*/
 	/*

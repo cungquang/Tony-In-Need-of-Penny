@@ -28,6 +28,4 @@ public class PrizeFactory{
 
 		return null;
 	}
-
-	//Add another factory below - if needed
 }

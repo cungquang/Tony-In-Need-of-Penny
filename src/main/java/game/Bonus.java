@@ -21,6 +21,7 @@
 package game;
 
 import game.Prize;
+import java.awt.*;
 
 public class Bonus extends game.Prize{
 
@@ -37,6 +38,17 @@ public class Bonus extends game.Prize{
 		this.setValue(value*2);
 		this.setStatus(true);
 	}
+
+	/*
+	draw():
+	Pre-cond: graphic
+	Post-cond: return the prize on the map
+	*/
+    public void draw(Graphics g) {
+        g.setColor(Color.YELLOW);
+        g.fillOval(this.getPosition()[0] * 25 + 8, this.getPosition()[1] * 25 + 8,11,11);
+    }
+
 
 	/*-------------------------Setter function-------------------------*/
 	/*
