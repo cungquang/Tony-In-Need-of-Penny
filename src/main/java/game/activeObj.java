@@ -1,11 +1,8 @@
 package game;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
-
 
 /**
  *	Abstract class:

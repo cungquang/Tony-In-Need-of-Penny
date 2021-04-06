@@ -1,6 +1,9 @@
 package game;
 
-import java.awt.event.KeyEvent;
+import java.awt.*;
+
+import game.Map;
+import game.Wall;
 
 /**
  * Character Class: create the Main Character
@@ -32,82 +35,54 @@ class Character extends activeObj {
     private boolean IsAlive = true;
     private boolean Is_General_Reward = false;
     private boolean Is_Bonus = false;
+    private Map m = null;
 
-    private Character ()
+    private Character (Map m)
     {
-        this.setdX(0);
-        this.setdY(0);
+        this.setdX(1);
+        this.setdY(6);
         this.General_Score = 0;
         this.Bonus_Score = 0;
         this.IsAlive = true;
         this.Is_General_Reward = false;
         this.Is_Bonus = false;
+        this.m = m;
     }
-    public static Character getInstance()
+
+    public static Character getInstance(Map m)
     {
         if (MC ==  null) {
-            MC == new Character();
+            MC = new Character(m);
         }
         return MC;
 
     }
 
-    //Is Collision
-    public void MovingEnemy_Collision(Eneposition e) {
-        if(e.getX() == this.getdX() && e.getY() == this.getdY())
-        {
-            IsAlive = false;
-        }
+    public void draw(Graphics g) {
+        g.setColor(Color.red);
+        g.fillOval(this.getdX() * 25 + 8, this.getdY() * 25 + 8,11,11);
     }
 
-
-    public void Reward_Collision(Prize p)
-    {
-        int x = p.getPosition()[0];
-        int y = p.getPosition()[1];
-        //Reward collision detection
-        if(x == this.getdX() && y == this.getdY())
-            Is_General_Reward = true;
-        else
-            Is_General_Reward = false;
-    }
-    public void Bonus_Collision(Bonus b)
-    {
-        int x = b.getPosition()[0];
-        int y = b.getPosition()[1];
-        // Bonus collision detection
-        if(x == this.getdX() && y == this.getdY())
-            Is_Bonus = true;
-        else
-            Is_Bonus = false;
-    }
-
-    public void KeyPressed(KeyEvent e, Map m) {
-        int k = e.getKeyCode();
-        if (k == KeyEvent.VK_LEFT)
-        {
-            // Wall collision detection
+    public void move(char dir) {
+        if(dir == 'l') {
             if (m.getLocation(this.getdX()-1, this.getdY()) == 1)
                 return;
             else {
                 this.setdX(-1);
             }
-        }
-        else if (k == KeyEvent.VK_RIGHT) {
+        } else if(dir == 'r') {
             if (m.getLocation(this.getdX()+1, this.getdY()) == 1)
                 return;
             else {
                 this.setdX(1);
             }
-        }
-        else if (k == KeyEvent.VK_DOWN) {
+        } else if(dir == 'u') {
             if (m.getLocation(this.getdX(), this.getdY()-1) == 1)
                 return;
             else {
                 this.setdY(-1);
             }
-        }
-        else if (k == KeyEvent.VK_UP) {
+        } else if(dir == 'd') {
             if (m.getLocation(this.getdX(), this.getdY()+1) == 1)
                 return;
             else {

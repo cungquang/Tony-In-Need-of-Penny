@@ -1,27 +1,32 @@
 package game;
 
 import javax.swing.*;
-import java.awt.EventQueue;
+import java.awt.*;
 
 import game.Map;
 
 /**
- * Game Class: this is the class that contains the main function which starts the game.enemy_test
+ * Game Class: this is the class that contains the main function which starts the game.
  * 
  * method:
- * + main():        create map and start game.
+ * + main():        creates game's JFrame and starts the game.
  */
-public class Game extends JFrame {
-    public Game() {
+public class Game implements Runnable {
+    public void run() {
+        JFrame game = new JFrame("Pac-Man");
+        game.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
+        Map map = new Map();
+        game.add(map, BorderLayout.CENTER);
+
+        game.pack();
+        game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        game.setVisible(true);
+
+        map.reset();
     }
 
     public static void main(String[] arg) {
-        JFrame j = new JFrame("test");
-        j.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        Map gameMap = new Map();
-        j.add(gameMap);
-        j.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        j.setVisible(true);
+        SwingUtilities.invokeLater(new Game());
     }
 }
