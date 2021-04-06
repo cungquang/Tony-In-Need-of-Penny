@@ -1,8 +1,6 @@
 package game;
 
 import java.awt.*;
-import java.util.List;
-import java.util.ArrayList;
 
 import game.PrizeFactory;
 import game.PrizeType;
@@ -51,6 +49,7 @@ public class Wall {
     private PrizeType rewardtype = PrizeType.reward;                        //Enum type [Reward]              
     private final int PRIZE_VALUE = 5;                                      //Base value of prize object
 
+
     /*-----------------------------------Reward & Bonus Object-----------------------------------*/
 
 
@@ -73,13 +72,15 @@ public class Wall {
                 } else if(maze[j][i] == 0) {
                     g.setColor(Color.GRAY);
                     g.fillRect(i * blockDimension,j * blockDimension,blockDimension,blockDimension);
-                } else if(maze[j][i] == 2) {
+                } 
+                /*else if(maze[j][i] == 2) {
                     g.setColor(Color.GRAY);
                     g.fillOval(i * blockDimension + 12, j * blockDimension + 12,5,5);
                 } else if(maze[j][i] == 3) {
                     g.setColor(Color.GRAY);
                     g.fillOval(i * blockDimension + 8, j * blockDimension + 8,11,11);
                 }
+                */
             }
         }
     }
@@ -158,9 +159,9 @@ public class Wall {
         Prize[] bonusArr = new Prize[this.Num_Bonus];
         int BIndex = 0;
 
-        for(int i = 0; i < maze.length; i++) {
-            for(int j = 0; j < maze[0].length; j++) {
-                if(maze[i][j] == 3){
+        for(int i = 0; i < maze[0].length; i++) {
+            for(int j = 0; j < maze.length; j++) {
+                if(maze[j][i] == 3) {
                     bonusArr[BIndex] = prizefactory.createPrize(bonustype, i, j, PRIZE_VALUE);
                     BIndex++;
                 }
@@ -180,9 +181,9 @@ public class Wall {
         Prize[] rewardArr = new Prize[this.Num_Reward];
         int RIndex = 0;
 
-        for(int i = 0; i < maze.length; i++) {
-            for(int j = 0; j < maze[0].length; j++) {
-                if(maze[i][j] == 2){
+        for(int i = 0; i < maze[0].length; i++) {
+            for(int j = 0; j < maze.length; j++) {
+                if(maze[j][i] == 2) {
                     rewardArr[RIndex] = prizefactory.createPrize(rewardtype, i, j, PRIZE_VALUE);
                     RIndex++;
                 }
@@ -191,4 +192,5 @@ public class Wall {
 
         return rewardArr;
     }
+
 }

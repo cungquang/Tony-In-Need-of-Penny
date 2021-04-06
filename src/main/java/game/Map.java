@@ -95,6 +95,21 @@ public class Map extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         wall.draw(g);
+
+        //Draw Bonus Object:
+        for(int i = 0; i < wall.NoOfBonus(); i++){
+            if(bonus[i].getStatus() == true){
+                bonus[i].draw(g,BLOCK_SIZE);
+            }
+        }
+
+        //Draw Reward Object:
+        for(int i = 0; i < wall.NoOfReward(); i++){
+            if(reward[i].getStatus() == true){
+                reward[i].draw(g,BLOCK_SIZE);
+            }
+        }
+
         player.draw(g);
     }
 }

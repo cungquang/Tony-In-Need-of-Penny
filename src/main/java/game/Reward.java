@@ -45,9 +45,9 @@ public class Reward extends game.Prize{
 	Pre-cond: graphic
 	Post-cond: return the prize on the map
 	*/
-    public void draw(Graphics g) {
+    public void draw(Graphics g, int blockdimension) {
         g.setColor(Color.BLUE);
-        g.fillOval(this.getPosition()[0] * 25 + 8, this.getPosition()[1] * 25 + 8,11,11);
+        g.fillOval(this.getPosition()[0]*blockdimension + 12, this.getPosition()[1]*blockdimension + 12,5,5);
     }
 
 	/*-------------------------Setter function-------------------------*/

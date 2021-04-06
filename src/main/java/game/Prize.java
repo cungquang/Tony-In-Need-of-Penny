@@ -22,6 +22,8 @@
 
 package game;
 
+import java.awt.*;
+
 public abstract class Prize{
 	private int Nbr;
 	private int xCoordinate;
@@ -30,6 +32,13 @@ public abstract class Prize{
 	private boolean PrizeStatus;
 
 	/*-------------------------Getter function-------------------------*/
+	/*
+	draw():
+	Pre-cond: graphic
+	Post-cond: return the prize on the map
+	*/
+    public void draw(Graphics g, int blockdimension){}
+
 	/*
 	getNbr():
 	Pre-cond: none
