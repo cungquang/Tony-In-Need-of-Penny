@@ -18,8 +18,8 @@ public class PrizeFactory{
 	Pre-cond: requires object type to identify the product need to produce
 	Post-cond: return an object match the objec type
 	*/
-	Prize createPrize(ObjType objtype, int dx, int dy, int value){
-		switch(objtype){
+	Prize createPrize(PrizeType prizetype, int dx, int dy, int value){
+		switch(prizetype){
 			case reward:
 				return new Reward(dx, dy, value);
 			case bonus:
