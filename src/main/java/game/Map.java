@@ -57,8 +57,6 @@ public class Map extends JPanel {
                 playing = true;
                 if(e.getKeyCode() == KeyEvent.VK_LEFT) {
                     player.move('l');
-                            System.out.println("Bonus: " + wall.NoOfPrize()[0]);
-        System.out.println("Reward: " + wall.NoOfPrize()[1]);
                 } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     player.move('r');
                 } else if(e.getKeyCode() == KeyEvent.VK_UP) {
@@ -75,7 +73,8 @@ public class Map extends JPanel {
         wall.reset();
         player = Character.getInstance(this);
 
-
+        bonus = wall.GetBonusArray();
+        reward = wall.GetRewardArray();
 
         requestFocusInWindow();
         playing = false;

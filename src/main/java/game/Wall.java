@@ -1,6 +1,8 @@
 package game;
 
 import java.awt.*;
+import java.util.List;
+import java.util.ArrayList;
 
 import game.PrizeFactory;
 import game.PrizeType;
@@ -15,7 +17,7 @@ public class Wall {
     private int width;
     private int height;
 
-    protected static int[][] maze = {
+    private static int[][] maze = {
         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
         {1,3,0,0,0,1,0,0,2,2,2,0,2,0,1,0,0,0,3,1},
         {1,0,1,1,0,0,0,1,1,0,1,1,1,0,1,0,1,1,1,1},
@@ -43,7 +45,8 @@ public class Wall {
     /*-----------------------------------Reward & Bonus Object-----------------------------------*/
    
     private PrizeFactory prizefactory = new PrizeFactory();                 //Factory to create [Reward] or [Bonus]
-    private int NUM_PRIZE[] = new int[2];                                   //Number of prize: 0 - [Bonus], 1 - [Reward]
+    private int Num_Bonus;                                                  //Count number of [Bonus] object
+    private int Num_Reward;                                                 //Count number of [Reward] object
     private PrizeType bonustype = PrizeType.bonus;                          //Enum type [Bonus]
     private PrizeType rewardtype = PrizeType.reward;                        //Enum type [Reward]              
     private final int PRIZE_VALUE = 5;                                      //Base value of prize object
@@ -58,6 +61,7 @@ public class Wall {
         height = mapHeight;
         blockDimension = blockSize;
         numBlocks = numBlocks;
+        this.CountPrize();
     }
 
     public void draw(Graphics g) {
@@ -110,35 +114,40 @@ public class Wall {
     pre-cond: none
     post-cond: count number of [Bonus] and [Reward] on the maze
     */
-    public void CountPrize(){
-        int num_prize[] = {0,0};
+    private void CountPrize(){
 
         for(int i = 0; i < maze.length; i++) {
             for(int j = 0; j < maze[0].length; j++) {
                 //Count Number of Bonus
                 if(maze[i][j] == 3){
-                    num_prize[0]++;
+                    Num_Bonus++;
                 }
 
                 //Count Number of Reward
                 if(maze[i][j] == 2){
-                    num_prize[1]++;
+                    Num_Reward++;
                 }
             }
         }
-        this.NUM_PRIZE = num_prize;
     }
 
     /*
-    NoOfPrize()
+    NoOfBonus():
     Pre-cond: none
-    Post-cond: return number of: index 0 is [Bonus] - index 1 is [Reward]
+    Post-cond: return number of [Bonus] object
     */
-    public int[] NoOfPrize(){
-        this.CountPrize();
-        return NUM_PRIZE;
+    public int NoOfBonus(){
+        return this.Num_Bonus;
     }
 
+    /*
+    NoOfBonus():
+    Pre-cond: none
+    Post-cond: return number of [Bonus] object
+    */
+    public int NoOfReward(){
+        return this.Num_Reward;
+    }
 
     /*
     GetBonusArray()
@@ -146,14 +155,14 @@ public class Wall {
     Post-cond: return an array of Bonus object
     */
     public Prize[] GetBonusArray(){
-        Prize bonusArr[]= new Prize[NUM_PRIZE[0]];
-        int bonusEle = 0;
+        Prize[] bonusArr = new Prize[this.Num_Bonus];
+        int BIndex = 0;
 
         for(int i = 0; i < maze.length; i++) {
             for(int j = 0; j < maze[0].length; j++) {
                 if(maze[i][j] == 3){
-                    bonusArr[bonusEle] = prizefactory.createPrize(bonustype, i, j, PRIZE_VALUE);
-                    bonusEle++;
+                    bonusArr[BIndex] = prizefactory.createPrize(bonustype, i, j, PRIZE_VALUE);
+                    BIndex++;
                 }
             }
         }
@@ -168,14 +177,14 @@ public class Wall {
     Post-cond: return an array of Reward object
     */
     public Prize[] GetRewardArray(){
-        Prize rewardArr[]= new Prize[NUM_PRIZE[1]];
-        int rewardEle = 0;
+        Prize[] rewardArr = new Prize[this.Num_Reward];
+        int RIndex = 0;
 
         for(int i = 0; i < maze.length; i++) {
             for(int j = 0; j < maze[0].length; j++) {
                 if(maze[i][j] == 2){
-                    rewardArr[rewardEle] = prizefactory.createPrize(rewardtype, i, j, PRIZE_VALUE);
-                    rewardEle++;
+                    rewardArr[RIndex] = prizefactory.createPrize(rewardtype, i, j, PRIZE_VALUE);
+                    RIndex++;
                 }
             }
         }
