@@ -9,8 +9,7 @@
 
 package game;
 
-public enum ObjType{
+public enum PrizeType{
 	reward,
 	bonus,
-	staticEnemy,
 }

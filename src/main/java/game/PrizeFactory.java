@@ -10,7 +10,7 @@ package game;
 
 import game.*;
 
-public class ObjFactory{
+public class PrizeFactory{
 
 	/*------------------------Create Prize------------------------*/
 	/*
