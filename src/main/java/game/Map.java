@@ -30,6 +30,8 @@ public class Map extends JPanel {
     private Character player;
     private Wall wall;
 
+    private PrizeFactory prizefactory;
+    private final int PRIZEVALUE = 5;
     private Prize bonus[];
     private Prize reward[];
 
@@ -73,8 +75,9 @@ public class Map extends JPanel {
         wall.reset();
         player = Character.getInstance(this);
 
-        bonus = wall.GetBonusArray();
-        reward = wall.GetRewardArray();
+        prizefactory = new PrizeFactory(wall,PRIZEVALUE);
+        bonus = prizefactory.GetBonusArray();
+        reward = prizefactory.GetRewardArray();
 
         requestFocusInWindow();
         playing = false;
@@ -97,14 +100,14 @@ public class Map extends JPanel {
         wall.draw(g);
 
         //Draw Bonus Object:
-        for(int i = 0; i < wall.NoOfBonus(); i++){
+        for(int i = 0; i < prizefactory.NoOfBonus(); i++){
             if(bonus[i].getStatus() == true){
                 bonus[i].draw(g,BLOCK_SIZE);
             }
         }
 
         //Draw Reward Object:
-        for(int i = 0; i < wall.NoOfReward(); i++){
+        for(int i = 0; i < prizefactory.NoOfReward(); i++){
             if(reward[i].getStatus() == true){
                 reward[i].draw(g,BLOCK_SIZE);
             }

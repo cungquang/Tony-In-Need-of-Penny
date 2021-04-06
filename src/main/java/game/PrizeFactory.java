@@ -8,11 +8,28 @@
 
 package game;
 
-import game.*;
-
 public class PrizeFactory{
+    private PrizeType bonustype;                         //Enum type [Bonus]
+    private PrizeType rewardtype;                        //Enum type [Reward]              
+    private int PRIZE_VALUE;                             //Base value of prize object
+    private int Num_Bonus;                               //Count number of [Bonus] object
+    private int Num_Reward;                              //Count number of [Reward] object
+ 	private int[][] maze;
 
-	/*------------------------Create Prize------------------------*/
+	/*-----------------------------------Constructor Prize-----------------------------------*/
+	/*
+	PrizeFactory()
+	Pre-cond: none
+	Post-cond: return the object type PrizeFactory
+	*/
+	public PrizeFactory(Wall m, int prizevalue){
+		this.maze = m.getMaze();
+		this.bonustype = PrizeType.bonus;
+		this.rewardtype = PrizeType.reward;
+		this.PRIZE_VALUE = prizevalue;
+		this.CountPrize();
+	}
+
 	/*
 	createPrize():
 	Pre-cond: requires object type to identify the product need to produce
@@ -28,4 +45,92 @@ public class PrizeFactory{
 
 		return null;
 	}
+
+
+
+    /*-----------------------------------Reward & Bonus Object-----------------------------------*/
+    /*
+    CountPrize()
+    pre-cond: none
+    post-cond: count number of [Bonus] and [Reward] on the maze
+    */
+    private void CountPrize(){
+
+        for(int i = 0; i < maze.length; i++) {
+            for(int j = 0; j < maze[0].length; j++) {
+                //Count Number of Bonus
+                if(maze[i][j] == 3){
+                    Num_Bonus++;
+                }
+
+                //Count Number of Reward
+                if(maze[i][j] == 2){
+                    Num_Reward++;
+                }
+            }
+        }
+    }
+
+    /*
+    NoOfBonus():
+    Pre-cond: none
+    Post-cond: return number of [Bonus] object
+    */
+    public int NoOfBonus(){
+        return this.Num_Bonus;
+    }
+
+    /*
+    NoOfBonus():
+    Pre-cond: none
+    Post-cond: return number of [Bonus] object
+    */
+    public int NoOfReward(){
+        return this.Num_Reward;
+    }
+
+
+	/*
+    GetBonusArray()
+    Pre-cond: none
+    Post-cond: return an array of Bonus object
+    */
+    public Prize[] GetBonusArray(){
+        Prize[] bonusArr = new Prize[this.Num_Bonus];
+        int BIndex = 0;
+
+        for(int i = 0; i < maze[0].length; i++) {
+            for(int j = 0; j < maze.length; j++) {
+                if(maze[j][i] == 3) {
+                    bonusArr[BIndex] = createPrize(bonustype, i, j, PRIZE_VALUE);
+                    BIndex++;
+                }
+            }
+        }
+
+        return bonusArr;
+    }
+
+
+    /*
+    GetRewardArray()
+    Pre-cond: none
+    Post-cond: return an array of Reward object
+    */
+    public Prize[] GetRewardArray(){
+        Prize[] rewardArr = new Prize[this.Num_Reward];
+        int RIndex = 0;
+
+        for(int i = 0; i < maze[0].length; i++) {
+            for(int j = 0; j < maze.length; j++) {
+                if(maze[j][i] == 2) {
+                    rewardArr[RIndex] = createPrize(rewardtype, i, j, PRIZE_VALUE);
+                    RIndex++;
+                }
+            }
+        }
+
+        return rewardArr;
+    }
+
 }
