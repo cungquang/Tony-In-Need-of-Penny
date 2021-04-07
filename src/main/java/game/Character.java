@@ -63,6 +63,24 @@ class Character extends activeObj {
         g.fillOval(this.getdX() * 25 + 8, this.getdY() * 25 + 8,11,11);
     }
 
+    //Bonus and Prize Checking method
+    public void IsPrize()
+    {
+        for(int i = 0; i < m.reward.length; i++) {
+            if (m.reward[i].getPosition()[0]  == MC.getdX() && m.reward[i].getPosition()[1] == MC.getdY())
+            {
+                m.reward[i].setStatus(false);
+            }
+        }
+        for (int i = 0; i < m.bonus.length; i++)
+        {
+            if (m.bonus[i].getPosition()[0]  == MC.getdX() && m.bonus[i].getPosition()[1] == MC.getdY())
+            {
+                m.bonus[i].setStatus(false);
+            }
+        }
+    }
+
     public void move(char dir) {
         if(dir == 'l') {
             if (m.getLocation(this.getdX()-1, this.getdY()) == 1)
