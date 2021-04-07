@@ -20,6 +20,7 @@ public class Game implements Runnable {
         game.add(map, BorderLayout.CENTER);
 
         game.pack();
+        game.setResizable(true);
         game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game.setVisible(true);
 
