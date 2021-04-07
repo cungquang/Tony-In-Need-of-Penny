@@ -29,6 +29,8 @@ import game.Character;
 public class Map extends JPanel {
     private Character player;
     private Wall wall;
+    private Door door;
+    private final int BASESCORE = 70;
 
     private PrizeFactory prizefactory;
     private final int PRIZEVALUE = 5;
@@ -77,6 +79,7 @@ public class Map extends JPanel {
         wall = new Wall(MAP_WIDTH, MAP_HEIGHT, BLOCK_SIZE, NUM_BLOCKS);
         wall.reset();
         player = Character.getInstance(this);
+        door = new Door(wall);
 
         prizefactory = new PrizeFactory(wall,PRIZEVALUE);
         bonus = prizefactory.GetBonusArray();
@@ -125,12 +128,18 @@ public class Map extends JPanel {
 
         //Draw Reward Object:
         for(int i = 0; i < prizefactory.NoOfReward(); i++){
-            repaint();
             if(reward[i].getStatus()){
                 player.IsPrize();
                 reward[i].draw(g,BLOCK_SIZE);
             }
         }
+
+        //Draw the door if wining:
+        if(player.getReward_Score() >= BASESCORE){
+            door.draw(g,BLOCK_SIZE);
+        }
+        
+
         enemy1.draw(g);
         player.draw(g);
         
