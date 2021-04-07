@@ -44,7 +44,7 @@ public class Map extends JPanel {
     public static final int MAP_WIDTH = BLOCK_SIZE * NUM_BLOCKS;
     public static final int MAP_HEIGHT = MAP_WIDTH + 50;
 
-    private Enemy enemy1 = new Enemy(this, 10, 10);
+    private Enemy enemy1 = new Enemy(this, 10, 11);
     public Map() {
         setBackground(Color.GRAY);
         Timer timer = new Timer(INTERVAL, new ActionListener(){
