@@ -1,6 +1,5 @@
 package game.enemy_test;
 
-import game.enemy_test.MyPanel;
 
 public class Eneposition {
     public Eneposition(){}

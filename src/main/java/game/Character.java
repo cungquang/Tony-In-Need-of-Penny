@@ -40,7 +40,7 @@ class Character extends activeObj {
     private Character (Map m)
     {
         this.setdX(1);
-        this.setdY(6);
+        this.setdY(1);
         this.General_Score = 0;
         this.Bonus_Score = 0;
         this.IsAlive = true;

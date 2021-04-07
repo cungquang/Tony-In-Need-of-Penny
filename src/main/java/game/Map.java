@@ -38,11 +38,13 @@ public class Map extends JPanel {
     private boolean playing = false;
     public static final int INTERVAL = 35;
 
+
     public final static int BLOCK_SIZE = 25;
     public final static int NUM_BLOCKS = 20;
     public static final int MAP_WIDTH = BLOCK_SIZE * NUM_BLOCKS;
     public static final int MAP_HEIGHT = MAP_WIDTH + 50;
 
+    private Enemy enemy1 = new Enemy(this, 10, 10);
     public Map() {
         setBackground(Color.GRAY);
         Timer timer = new Timer(INTERVAL, new ActionListener(){
@@ -57,6 +59,7 @@ public class Map extends JPanel {
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 playing = true;
+                enemy1.move_enemy(player);
                 if(e.getKeyCode() == KeyEvent.VK_LEFT) {
                     player.move('l');
                 } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -66,7 +69,7 @@ public class Map extends JPanel {
                 } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
                     player.move('d');
                 }
-            } 
+            }
         });
     }
 
@@ -112,7 +115,8 @@ public class Map extends JPanel {
                 reward[i].draw(g,BLOCK_SIZE);
             }
         }
-
+        enemy1.draw(g);
         player.draw(g);
+        
     }
 }

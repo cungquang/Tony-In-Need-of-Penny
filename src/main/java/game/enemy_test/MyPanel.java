@@ -14,9 +14,18 @@ public class MyPanel extends JPanel{
     public final static int size = 25;
 
     public MyPanel(int x, int y){
-		this.setBounds(x * size, y * size, size, size);
+      this.x=x;
+      this.y=y;
+		  this.setBounds(x * size, y * size, size, size);
     }
     
+    public int getX(){
+      return this.x;
+    }
+    public int getY(){
+      return this.y;
+    }
+
     public MyPanel(Eneposition fk){
       this.setBounds(fk.getX() * size, fk.getY() * size, size, size);
       x = fk.getX();
