@@ -12,6 +12,14 @@ public class Door{
 		this.getPosition();
 	}
 
+	public int getX(){
+		return xCoord;
+	}
+
+	public int getY(){
+		return yCoord;
+	}
+
 	public void getPosition(){
 		for(int i = 0; i < maze[0].length; i++) {
             for(int j = 0; j < maze.length; j++) {

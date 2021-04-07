@@ -16,8 +16,8 @@ public class Game implements Runnable {
     private final int Width = 600;
     private final int Height = 600;
 
-    public void run() {
 
+    public void run() {
         Map map = new Map();
         game.add(map, BorderLayout.CENTER);
 
@@ -27,7 +27,6 @@ public class Game implements Runnable {
         game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game.setVisible(true);
         game.setLocationRelativeTo(null);
-
 
         map.reset();
     }

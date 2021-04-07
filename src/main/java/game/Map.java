@@ -37,7 +37,8 @@ public class Map extends JPanel {
     public Prize bonus[];
     public Prize reward[];
 
-    private boolean playing = false;
+    private boolean playing = true;
+    private JLabel EndMessage;
     public static final int INTERVAL = 35;
 
 
@@ -91,8 +92,15 @@ public class Map extends JPanel {
     }
 
     void gameTick() {
+
+        //game runing:
         if(playing) {
             repaint();
+        }
+
+        //game wining mode:
+        if(player.getdX() == door.getX() & player.getdY() == door.getY()){
+            playing = false;
         }
     }
 
@@ -138,7 +146,6 @@ public class Map extends JPanel {
         if(player.getReward_Score() >= BASESCORE){
             door.draw(g,BLOCK_SIZE);
         }
-        
 
         enemy1.draw(g);
         player.draw(g);

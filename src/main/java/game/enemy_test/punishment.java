@@ -21,6 +21,5 @@ public class punishment extends JFrame{
         pFrame.setBounds(200, 200, 200, 200);
         pFrame.setVisible(true);
 
-    }
-    
+    }    
 }

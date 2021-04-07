@@ -31,7 +31,7 @@ class Character extends activeObj {
     private static Character MC = null;
     private int Reward_Score;
     private int Bonus_Score;
-//    is MC alive
+    //is MC alive
     private boolean IsAlive = true;
 
     private Map m = null;
