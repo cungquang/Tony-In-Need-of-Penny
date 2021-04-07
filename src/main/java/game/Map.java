@@ -97,10 +97,22 @@ public class Map extends JPanel {
         return wall.getLocation(x, y);
     }
 
+    //Draw Scores
+    private void drawScore(Graphics g) {
+        g.setFont(smallFont);
+        g.setColor(new Color(5, 180, 80));
+        String Gs = "Reward_Score: " + player.getReward_Score();
+        String Bs = "Bonus_Score: "+ player.getBonus_Score();
+        g.drawString(Gs, 50, 530+ 16);
+        g.drawString(Bs, 200, 530 + 16);
+
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         wall.draw(g);
+        drawScore(g);
 
         //Draw Bonus Object:
         for(int i = 0; i < prizefactory.NoOfBonus(); i++){
