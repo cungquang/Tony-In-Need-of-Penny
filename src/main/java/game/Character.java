@@ -29,23 +29,21 @@ import game.Wall;
 
 class Character extends activeObj {
     private static Character MC = null;
-    private int General_Score;
+    private int Reward_Score;
     private int Bonus_Score;
 //    is MC alive
     private boolean IsAlive = true;
-    private boolean Is_General_Reward = false;
-    private boolean Is_Bonus = false;
+
     private Map m = null;
 
     private Character (Map m)
     {
         this.setdX(1);
-        this.setdY(1);
-        this.General_Score = 0;
+        this.setdY(6);
+        this.Reward_Score = 0;
         this.Bonus_Score = 0;
         this.IsAlive = true;
-        this.Is_General_Reward = false;
-        this.Is_Bonus = false;
+
         this.m = m;
     }
 
@@ -67,18 +65,29 @@ class Character extends activeObj {
     public void IsPrize()
     {
         for(int i = 0; i < m.reward.length; i++) {
-            if (m.reward[i].getPosition()[0]  == MC.getdX() && m.reward[i].getPosition()[1] == MC.getdY())
+            if (m.reward[i].getPosition()[0]  == MC.getdX() && m.reward[i].getPosition()[1] == MC.getdY() &&m.reward[i].getStatus())
             {
+                Reward_Score += m.reward[i].getValue();
                 m.reward[i].setStatus(false);
             }
         }
         for (int i = 0; i < m.bonus.length; i++)
         {
-            if (m.bonus[i].getPosition()[0]  == MC.getdX() && m.bonus[i].getPosition()[1] == MC.getdY())
+            if (m.bonus[i].getPosition()[0]  == MC.getdX() && m.bonus[i].getPosition()[1] == MC.getdY() &&m.bonus[i].getStatus())
             {
+                Bonus_Score += m.bonus[i].getValue();
                 m.bonus[i].setStatus(false);
             }
         }
+    }
+
+    public int getReward_Score()
+    {
+        return Reward_Score;
+    }
+    public int getBonus_Score()
+    {
+        return Bonus_Score;
     }
 
     public void move(char dir) {
