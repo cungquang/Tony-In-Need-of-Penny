@@ -29,13 +29,16 @@ import game.Character;
 public class Map extends JPanel {
     private Character player;
     private Wall wall;
+    private Door door;
+    private final int BASESCORE = 70;
 
     private PrizeFactory prizefactory;
     private final int PRIZEVALUE = 5;
     public Prize bonus[];
     public Prize reward[];
 
-    private boolean playing = false;
+    private boolean playing = true;
+    private JLabel EndMessage;
     public static final int INTERVAL = 35;
 
 
@@ -89,6 +92,7 @@ public class Map extends JPanel {
         wall = new Wall(MAP_WIDTH, MAP_HEIGHT, BLOCK_SIZE, NUM_BLOCKS);
         wall.reset();
         player = Character.getInstance(this);
+        door = new Door(wall);
 
         prizefactory = new PrizeFactory(wall,PRIZEVALUE);
         bonus = prizefactory.GetBonusArray();
@@ -100,8 +104,15 @@ public class Map extends JPanel {
     }
 
     void gameTick() {
+
+        //game runing:
         if(playing) {
             repaint();
+        }
+
+        //game wining mode:
+        if(player.getdX() == door.getX() & player.getdY() == door.getY()){
+            playing = false;
         }
     }
 
@@ -109,10 +120,23 @@ public class Map extends JPanel {
         return wall.getLocation(x, y);
     }
 
+    //Draw Scores
+    private void drawScore(Graphics g) {
+        Font smallFont = new Font("SansSerif", Font.BOLD, 18);
+        g.setFont(smallFont);
+        g.setColor(new Color(5, 180, 80));
+        String Gs = "Reward_Score: " + player.getReward_Score();
+        String Bs = "Bonus_Score: "+ player.getBonus_Score();
+        g.drawString(Gs, 20, 530+ 16);
+        g.drawString(Bs, 250, 530 + 16);
+
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         wall.draw(g);
+        drawScore(g);
 
         //Draw Bonus Object:
         for(int i = 0; i < prizefactory.NoOfBonus(); i++){
@@ -124,7 +148,6 @@ public class Map extends JPanel {
 
         //Draw Reward Object:
         for(int i = 0; i < prizefactory.NoOfReward(); i++){
-            repaint();
             if(reward[i].getStatus()){
                 player.IsPrize();
                 reward[i].draw(g,BLOCK_SIZE);

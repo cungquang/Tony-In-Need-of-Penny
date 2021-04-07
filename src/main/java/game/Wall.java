@@ -32,7 +32,7 @@ public class Wall {
         {1,2,1,0,1,1,1,1,0,1,1,1,1,0,1,1,0,0,0,1},
         {1,0,1,0,0,0,0,2,0,0,0,1,0,2,2,0,0,1,0,1},
         {1,2,1,1,1,0,1,1,1,1,0,0,0,1,0,1,1,1,0,1},
-        {1,0,2,2,0,0,0,2,2,0,0,1,0,0,0,2,2,0,0,1},
+        {1,0,2,2,0,0,0,2,2,0,0,1,0,0,0,2,2,0,0,9},
         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 
     };
@@ -59,7 +59,8 @@ public class Wall {
                     g.setColor(Color.GRAY);
                     g.fillRect(i * blockDimension,j * blockDimension,blockDimension,blockDimension);
                 } 
-                /*else if(maze[j][i] == 2) {
+                /*
+                else if(maze[j][i] == 2) {
                     g.setColor(Color.GRAY);
                     g.fillOval(i * blockDimension + 12, j * blockDimension + 12,5,5);
                 } else if(maze[j][i] == 3) {

@@ -12,16 +12,21 @@ import game.Map;
  * + main():        creates game's JFrame and starts the game.
  */
 public class Game implements Runnable {
-    public void run() {
-        JFrame game = new JFrame("Pac-Man");
-        game.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    private final JFrame game = new JFrame("Pac-Man");
+    private final int Width = 600;
+    private final int Height = 600;
 
+
+    public void run() {
         Map map = new Map();
         game.add(map, BorderLayout.CENTER);
 
+        game.setPreferredSize(new Dimension(Width, Height));
         game.pack();
+        game.setResizable(true);
         game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game.setVisible(true);
+        game.setLocationRelativeTo(null);
 
         map.reset();
     }
