@@ -32,8 +32,8 @@ public class Map extends JPanel {
 
     private PrizeFactory prizefactory;
     private final int PRIZEVALUE = 5;
-    private Prize bonus[];
-    private Prize reward[];
+    public Prize bonus[];
+    public Prize reward[];
 
     private boolean playing = false;
     public static final int INTERVAL = 35;
@@ -101,14 +101,17 @@ public class Map extends JPanel {
 
         //Draw Bonus Object:
         for(int i = 0; i < prizefactory.NoOfBonus(); i++){
-            if(bonus[i].getStatus() == true){
+            if(bonus[i].getStatus()){
+                player.IsPrize();
                 bonus[i].draw(g,BLOCK_SIZE);
             }
         }
 
         //Draw Reward Object:
         for(int i = 0; i < prizefactory.NoOfReward(); i++){
-            if(reward[i].getStatus() == true){
+            repaint();
+            if(reward[i].getStatus()){
+                player.IsPrize();
                 reward[i].draw(g,BLOCK_SIZE);
             }
         }
