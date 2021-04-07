@@ -42,7 +42,7 @@ public class AutiFindWay {
     public AutiFindWay(){
         
         
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 21; i++) {
 			for (int j = 0; j < 20; j++) {
 				if (maze[i][j]== 1) {
 					int y = i;

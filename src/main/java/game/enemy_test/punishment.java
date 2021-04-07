@@ -20,7 +20,7 @@ public class punishment extends JFrame{
         pFrame.add(pJPanel);
         pFrame.setBounds(200, 200, 200, 200);
         pFrame.setVisible(true);
-
+        
     }
     
 }

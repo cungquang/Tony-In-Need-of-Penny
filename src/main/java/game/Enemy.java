@@ -37,7 +37,7 @@ public class Enemy extends activeObj{
             }
             
             Eneposition fk = wayList.get(wayList.size()-2);
-            System.out.println(distanceX+"+"+distanceY+"+"+localX+"+"+localY);
+            //System.out.println(distanceX+"+"+distanceY+"+"+localX+"+"+localY);
 			// up
 			if (this.getdY() > fk.getY()) {
                 this.setdY(-1);

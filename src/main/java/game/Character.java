@@ -81,32 +81,33 @@ class Character extends activeObj {
         }
     }
 
-    public void move(char dir) {
+    public int move(char dir) {
         if(dir == 'l') {
             if (m.getLocation(this.getdX()-1, this.getdY()) == 1)
-                return;
+                return 1;
             else {
                 this.setdX(-1);
             }
         } else if(dir == 'r') {
             if (m.getLocation(this.getdX()+1, this.getdY()) == 1)
-                return;
+                return 1;
             else {
                 this.setdX(1);
             }
         } else if(dir == 'u') {
             if (m.getLocation(this.getdX(), this.getdY()-1) == 1)
-                return;
+                return 1;
             else {
                 this.setdY(-1);
             }
         } else if(dir == 'd') {
             if (m.getLocation(this.getdX(), this.getdY()+1) == 1)
-                return;
+                return 1;
             else {
                 this.setdY(1);
             }
         }
+        return 0;
     }
 }
 

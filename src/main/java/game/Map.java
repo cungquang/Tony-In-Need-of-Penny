@@ -45,6 +45,10 @@ public class Map extends JPanel {
     public static final int MAP_HEIGHT = MAP_WIDTH + 50;
 
     private Enemy enemy1 = new Enemy(this, 10, 11);
+    private Enemy enemy2 = new Enemy(this, 1, 19);
+    private Enemy enemy3 = new Enemy(this, 18,18);
+    private Enemy enemy4 = new Enemy(this, 18, 3);
+    private Enemy enemy5 = new Enemy(this, 6, 6);
     public Map() {
         setBackground(Color.GRAY);
         Timer timer = new Timer(INTERVAL, new ActionListener(){
@@ -59,16 +63,24 @@ public class Map extends JPanel {
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 playing = true;
-                enemy1.move_enemy(player);
+                int i = 1;
                 if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    player.move('l');
+                    i = player.move('l');
                 } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    player.move('r');
+                    i = player.move('r');
                 } else if(e.getKeyCode() == KeyEvent.VK_UP) {
-                    player.move('u');
+                    i = player.move('u');
                 } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-                    player.move('d');
+                    i = player.move('d');
                 }
+                if(i == 0){enemy1.move_enemy(player);
+                           enemy2.move_enemy(player);
+                           enemy3.move_enemy(player);
+                           enemy4.move_enemy(player);
+                           enemy5.move_enemy(player);
+                        }
+
+                       
             }
         });
     }
@@ -118,8 +130,13 @@ public class Map extends JPanel {
                 reward[i].draw(g,BLOCK_SIZE);
             }
         }
-        enemy1.draw(g);
         player.draw(g);
+        
+        enemy1.draw(g);
+        enemy2.draw(g);
+        enemy3.draw(g);
+        enemy4.draw(g);
+        enemy5.draw(g);
         
     }
 }
