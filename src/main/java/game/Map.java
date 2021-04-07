@@ -99,12 +99,13 @@ public class Map extends JPanel {
 
     //Draw Scores
     private void drawScore(Graphics g) {
+        Font smallFont = new Font("SansSerif", Font.BOLD, 18);
         g.setFont(smallFont);
         g.setColor(new Color(5, 180, 80));
         String Gs = "Reward_Score: " + player.getReward_Score();
         String Bs = "Bonus_Score: "+ player.getBonus_Score();
-        g.drawString(Gs, 50, 530+ 16);
-        g.drawString(Bs, 200, 530 + 16);
+        g.drawString(Gs, 20, 530+ 16);
+        g.drawString(Bs, 250, 530 + 16);
 
     }
 

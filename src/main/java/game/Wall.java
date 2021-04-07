@@ -59,7 +59,8 @@ public class Wall {
                     g.setColor(Color.GRAY);
                     g.fillRect(i * blockDimension,j * blockDimension,blockDimension,blockDimension);
                 } 
-                /*else if(maze[j][i] == 2) {
+                /*
+                else if(maze[j][i] == 2) {
                     g.setColor(Color.GRAY);
                     g.fillOval(i * blockDimension + 12, j * blockDimension + 12,5,5);
                 } else if(maze[j][i] == 3) {
