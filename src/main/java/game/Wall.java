@@ -2,6 +2,18 @@ package game;
 
 import java.awt.*;
 
+/**
+ * Wall class: stores the location of the walls on the map
+ * 
+ * - int[][] maze: contains the map data.
+ * 
+ * methods:
+ * + Wall():        instantiates basic properties of the map
+ * + draw():        method for drawing the map and walls
+ * + reset():       resets the map variables
+ * + getMaze():     returns the int[][] array containing the map data
+ * + getLocation(): returns the item at the given location
+ */
 public class Wall {
     private static int blockDimension;
     private static int numBlocks;

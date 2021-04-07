@@ -18,13 +18,13 @@ import game.Character;
 /**
  * Map class: creates and draws the map
  * 
- * - int[][] level: contains the map data.
- * 
  * methods:
- * + getLocation():     returns the object at the given location
- * + setLocation():     sets the object at the given location
- * + paintComponent():  swing method for drawing the components to the JPanel
- * - drawWals():        draws the walls of the map and the rewards
+ * + Map():             starts the game timer and listens for key inputs
+ * + reset():           resets the level
+ * + gameTick():        repaints level at each game tick
+ * + getLocation():     returns the item at the requested location on the map
+ * + paintComponent():  method needed to draw all the components on the JPanel
+ * - drawScore():       draws the score on the JPanel
  */
 public class Map extends JPanel {
     private Character player;

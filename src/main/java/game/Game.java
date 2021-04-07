@@ -9,6 +9,7 @@ import game.Map;
  * Game Class: this is the class that contains the main function which starts the game.
  * 
  * method:
+ * + run():         generates a new game amp and resets the map.
  * + main():        creates game's JFrame and starts the game.
  */
 public class Game implements Runnable {
