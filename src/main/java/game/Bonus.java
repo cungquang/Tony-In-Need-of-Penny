@@ -44,8 +44,10 @@ public class Bonus extends game.Prize{
 	Post-cond: return the prize on the map
 	*/
     public void draw(Graphics g, int blockdimension) {
-        g.setColor(Color.YELLOW);
-        g.fillOval(this.getPosition()[0]*blockdimension + 8, this.getPosition()[1]*blockdimension + 8,11,11);
+		if (this.getStatus()) {
+			g.setColor(Color.YELLOW);
+			g.fillOval(this.getPosition()[0] * blockdimension + 8, this.getPosition()[1] * blockdimension + 8, 11, 11);
+		}
     }
 
 
