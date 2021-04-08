@@ -52,8 +52,8 @@ class Character extends activeObj {
         if (MC ==  null) {
             MC = new Character(m);
         }
-        return MC;
 
+        return MC;
     }
 
     public int getReward_Score(){

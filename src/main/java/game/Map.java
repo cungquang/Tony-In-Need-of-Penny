@@ -27,8 +27,8 @@ import game.Character;
  * - drawScore():       draws the score on the JPanel
  */
 public class Map extends JPanel {
-    private Character player;
     private Wall wall;
+    private Character player;
     
     private PrizeFactory prizefactory;
     private final int BASESCORE = 70;
@@ -54,6 +54,8 @@ public class Map extends JPanel {
     private Enemy enemy3 = new Enemy(this, 18,18);
     private Enemy enemy4 = new Enemy(this, 18, 3);
     private Enemy enemy5 = new Enemy(this, 6, 6);
+
+
     public Map() {
         setBackground(Color.GRAY);
         Timer timer = new Timer(INTERVAL, new ActionListener(){
