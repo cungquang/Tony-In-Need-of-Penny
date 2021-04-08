@@ -6,10 +6,12 @@ public class Door{
 	int[][]  maze;
 	int xCoord;
 	int yCoord;
+	int DoorVal;
 
-	public Door(Wall wall){
-		this.maze = wall.getMaze();
-		this.getPosition();
+	public Door(Wall wall, int x, int y){
+		this.xCoord = x;
+		this.yCoord = y;
+		this.DoorVal = 9;
 	}
 
 	public int getX(){
@@ -20,18 +22,8 @@ public class Door{
 		return yCoord;
 	}
 
-	public void getPosition(){
-		for(int i = 0; i < maze[0].length; i++) {
-            for(int j = 0; j < maze.length; j++) {
-                if(maze[j][i] == 9) {
-                	xCoord = i;
-                	yCoord = j;
-                }
-            }
-        }
-	}
-
-	public void draw(Graphics g, int blockdimension){
+	public void draw(Graphics g, int blockdimension, Wall wall){
+		wall.setLocation(this.xCoord, this.yCoord, this.DoorVal);
         g.setColor(Color.CYAN);
         g.fillRect(xCoord * blockdimension, yCoord*blockdimension, blockdimension, blockdimension);
 	}

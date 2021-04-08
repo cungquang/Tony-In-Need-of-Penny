@@ -56,6 +56,14 @@ class Character extends activeObj {
 
     }
 
+    public int getReward_Score(){
+        return this.Reward_Score;
+    }
+
+    public int getBonus_Score(){
+        return this.Bonus_Score;
+    }
+
     public void draw(Graphics g) {
         g.setColor(Color.red);
         g.fillOval(this.getdX() * 25 + 8, this.getdY() * 25 + 8,11,11);

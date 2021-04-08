@@ -29,13 +29,15 @@ import game.Character;
 public class Map extends JPanel {
     private Character player;
     private Wall wall;
-    private Door door;
-    private final int BASESCORE = 70;
-
+    
     private PrizeFactory prizefactory;
+    private final int BASESCORE = 70;
     private final int PRIZEVALUE = 5;
+    private final int DOOR_X = 19;
+    private final int DOOR_Y = 19;
     public Prize bonus[];
     public Prize reward[];
+    private Door door;
 
     private boolean playing = true;
     private JLabel EndMessage;
@@ -78,9 +80,9 @@ public class Map extends JPanel {
                 }
                 if(i == 0){enemy1.move_enemy(player);
                            enemy2.move_enemy(player);
-                           enemy3.move_enemy(player);
-                           enemy4.move_enemy(player);
-                           enemy5.move_enemy(player);
+                           //enemy3.move_enemy(player);
+                           //enemy4.move_enemy(player);
+                           //enemy5.move_enemy(player);
                         }
 
                        
@@ -92,7 +94,7 @@ public class Map extends JPanel {
         wall = new Wall(MAP_WIDTH, MAP_HEIGHT, BLOCK_SIZE, NUM_BLOCKS);
         wall.reset();
         player = Character.getInstance(this);
-        door = new Door(wall);
+        door = new Door(wall,DOOR_X,DOOR_Y);
 
         prizefactory = new PrizeFactory(wall,PRIZEVALUE);
         bonus = prizefactory.GetBonusArray();
@@ -153,13 +155,18 @@ public class Map extends JPanel {
                 reward[i].draw(g,BLOCK_SIZE);
             }
         }
+
+        if(player.getReward_Score() >= BASESCORE){
+            door.draw(g, BLOCK_SIZE, wall);
+        }
+
         player.draw(g);
         
         enemy1.draw(g);
         enemy2.draw(g);
-        enemy3.draw(g);
-        enemy4.draw(g);
-        enemy5.draw(g);
+        //enemy3.draw(g);
+        //enemy4.draw(g);
+        //enemy5.draw(g);
         
     }
 }
