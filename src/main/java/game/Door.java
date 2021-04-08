@@ -1,9 +1,22 @@
+/**
+*	Class Door: 
+*	- int xCoord:		the coordination of the Door on x-axis	
+*	- int yCoord: 		the coordination of the Door on y-axis
+*	- int DoorVal:		value represents the Door on maze - 9
+*	
+*	method:
+*	+ Door():			Constructor for Door class 		
+*	+ getX:				return the x coordinate of the Door
+* 	+ getY():			return the y coordinate of the Door
+*	+ draw():			draw the Door on the map
+*
+*/
+
 package game;
 
 import java.awt.*;
 
 public class Door{
-	int[][]  maze;
 	int xCoord;
 	int yCoord;
 	int DoorVal;

@@ -33,7 +33,7 @@ public class Map extends JPanel {
     private PrizeFactory prizefactory;
     private final int BASESCORE = 70;
     private final int PRIZEVALUE = 5;
-    private final int DOOR_X = 19;
+    private final int DOOR_X = 18;
     private final int DOOR_Y = 19;
     public Prize bonus[];
     public Prize reward[];
@@ -126,11 +126,11 @@ public class Map extends JPanel {
     private void drawScore(Graphics g) {
         Font smallFont = new Font("SansSerif", Font.BOLD, 18);
         g.setFont(smallFont);
-        g.setColor(new Color(5, 180, 80));
+        g.setColor(Color.WHITE);
         String Gs = "Reward_Score: " + player.getReward_Score();
         String Bs = "Bonus_Score: "+ player.getBonus_Score();
         g.drawString(Gs, 20, 530+ 16);
-        g.drawString(Bs, 250, 530 + 16);
+        g.drawString(Bs, 330, 530 + 16);
 
     }
 
