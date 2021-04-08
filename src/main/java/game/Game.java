@@ -10,8 +10,8 @@ import game.Map;
  * Game Class: this is the class that contains the main function which starts the game.
  * 
  * method:
- * + run():         generates a new game amp and resets the map.
- * + main():        creates game's JFrame and starts the game.
+ * + main(): creates game's JFrame and starts the game.
+ * + Game(): constructor for the Game object
  */
 
 
@@ -23,7 +23,7 @@ public class Game{
 
     //Container - contain the element need to display
     Container contain;                                
-    JPanel introPanel, startButtonPanel, gamePanel;
+    JPanel introPanel, startButtonPanel;
     JButton startButton;
     JLabel titleGame;
 
@@ -36,7 +36,6 @@ public class Game{
 
     public static void main(String[] arg) {
         new Game();
-
         //SwingUtilities.invokeLater(new Game());
     }
 
@@ -82,6 +81,10 @@ public class Game{
         contain.add(startButtonPanel);
     }
 
+    /*
+    * Class for running the game - implements of Runnable
+    *   + run(): generates a new game amp and resets the map.
+    */
     public class RunGame implements Runnable{
         private final JFrame game = new JFrame("Pac-Man");
         private final int Width = 600;
@@ -104,6 +107,10 @@ public class Game{
 
     }
 
+    /*
+    * Class for "START" button - implements ActionListener
+    *   + actionPerformed: activate the Rungame object to run the game
+    */
     public class TitleScreenHandler implements ActionListener{
         public void actionPerformed(ActionEvent event){
             window.setVisible(false);
