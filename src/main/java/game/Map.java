@@ -69,7 +69,6 @@ public class Map extends JPanel {
 
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
-                playing = true;
                 int i = 1;
                 if(e.getKeyCode() == KeyEvent.VK_LEFT) {
                     i = player.move('l');
@@ -103,7 +102,6 @@ public class Map extends JPanel {
         reward = prizefactory.GetRewardArray();
 
         requestFocusInWindow();
-        playing = false;
         repaint();
     }
 
@@ -117,6 +115,7 @@ public class Map extends JPanel {
         //game wining mode:
         if(player.getdX() == door.getX() & player.getdY() == door.getY()){
             playing = false;
+            return;
         }
     }
 
