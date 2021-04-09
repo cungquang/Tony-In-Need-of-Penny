@@ -136,11 +136,11 @@ public class Map extends JPanel {
         super.paintComponent(g);
         wall.draw(g);
         drawScore(g);
+        player.IsPrize();
 
         //Draw Bonus Object:
         for(int i = 0; i < prizefactory.NoOfBonus(); i++){
             if(bonus[i].getStatus()){
-                player.IsPrize();
                 bonus[i].draw(g,BLOCK_SIZE);
             }
         }
@@ -148,7 +148,6 @@ public class Map extends JPanel {
         //Draw Reward Object:
         for(int i = 0; i < prizefactory.NoOfReward(); i++){
             if(reward[i].getStatus()){
-                player.IsPrize();
                 reward[i].draw(g,BLOCK_SIZE);
             }
         }
