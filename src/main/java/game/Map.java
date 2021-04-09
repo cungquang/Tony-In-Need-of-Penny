@@ -84,9 +84,7 @@ public class Map extends JPanel {
                            //enemy3.move_enemy(player);
                            //enemy4.move_enemy(player);
                            //enemy5.move_enemy(player);
-                        }
-
-                       
+                        }  
             }
         });
     }
@@ -113,9 +111,8 @@ public class Map extends JPanel {
         }
 
         //game wining mode:
-        if(player.getdX() == door.getX() & player.getdY() == door.getY()){
+        if(wall.getLocation(DOOR_X, DOOR_Y) == 9 & player.getdX() == door.getX() & player.getdY() == door.getY()){
             playing = false;
-            return;
         }
     }
 
@@ -132,7 +129,6 @@ public class Map extends JPanel {
         String Bs = "Bonus_Score: "+ player.getBonus_Score();
         g.drawString(Gs, 20, 530+ 16);
         g.drawString(Bs, 330, 530 + 16);
-
     }
 
     @Override
