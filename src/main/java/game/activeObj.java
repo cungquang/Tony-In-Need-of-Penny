@@ -27,6 +27,16 @@ class activeObj extends KeyAdapter {
         return Character_dy;
     }
 
+    public void ReSetX(int x)
+    {
+        Character_dx = x;
+    }
+
+    public void ReSetY(int y)
+    {
+        Character_dy = y;
+    }    
+
     public void setdX(int x) {
         Character_dx += x;
     }
