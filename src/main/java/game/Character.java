@@ -64,6 +64,12 @@ class Character extends activeObj {
         return this.Bonus_Score;
     }
 
+    public void ResetPosition()
+    {
+        MC.ReSetX(0);
+        MC.ReSetY(6);
+    }
+
     public void draw(Graphics g) {
         g.setColor(Color.red);
         g.fillOval(this.getdX() * 25 + 8, this.getdY() * 25 + 8,11,11);
