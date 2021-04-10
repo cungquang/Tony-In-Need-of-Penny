@@ -27,6 +27,8 @@ import game.Character;
  * - drawScore():       draws the score on the JPanel
  */
 public class Map extends JPanel {
+    private Font miniFont = new Font("SansSerif", Font.BOLD, 15);
+    private WinMessage winning = new WinMessage();
     private Wall wall = new Wall(MAP_WIDTH, MAP_HEIGHT, BLOCK_SIZE, NUM_BLOCKS);
     private Character player = Character.getInstance(this);;
     
@@ -51,9 +53,9 @@ public class Map extends JPanel {
 
     private Enemy enemy1 = new Enemy(this, 10, 11);
     private Enemy enemy2 = new Enemy(this, 1, 19);
-    private Enemy enemy3 = new Enemy(this, 18,18);
-    private Enemy enemy4 = new Enemy(this, 18, 3);
-    private Enemy enemy5 = new Enemy(this, 6, 6);
+    //private Enemy enemy3 = new Enemy(this, 18,18);
+    //private Enemy enemy4 = new Enemy(this, 18, 3);
+    //private Enemy enemy5 = new Enemy(this, 6, 6);
 
 
     public Map() {
@@ -110,6 +112,9 @@ public class Map extends JPanel {
         //game wining mode:
         if(wall.getLocation(DOOR_X, DOOR_Y) == 9 & player.getdX() == door.getX() & player.getdY() == door.getY()){
             playing = false;
+            winning.winMess.setVisible(true);
+            this.reset();
+            playing = true;
         }
     }
 
@@ -119,8 +124,7 @@ public class Map extends JPanel {
 
     //Draw Scores
     private void drawScore(Graphics g) {
-        Font smallFont = new Font("SansSerif", Font.BOLD, 15);
-        g.setFont(smallFont);
+        g.setFont(miniFont);
         g.setColor(Color.WHITE);
 
         String rewardstr = "Reward:"; 
@@ -132,7 +136,6 @@ public class Map extends JPanel {
         g.drawString(rewardscore, 510, 100 + 16);
         g.drawString(bonusstr, 510, 150 + 16);
         g.drawString(bonusscore, 510, 200 + 16);
-
     }
 
     @Override
@@ -168,5 +171,85 @@ public class Map extends JPanel {
         //enemy4.draw(g);
         //enemy5.draw(g);
         
+    }
+
+
+    public class WinMessage{
+        public JFrame winMess = new JFrame("Winner");
+        private int widthMess = 600;
+        private int heightMess = 200;
+        private Container wincontain;
+
+        private JPanel winPanel, yesPanel, noPanel;
+        private JLabel wintitle;
+        private JButton yesButton, noButton;
+
+        private Font miniFont = new Font("SansSerif", Font.BOLD, 18);
+
+
+        public WinMessage(){
+            winMess.setSize(new Dimension(widthMess, heightMess));
+            winMess.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            winMess.getContentPane().setBackground(Color.BLACK);
+            winMess.setResizable(true);
+            winMess.setLayout(null);
+            winMess.setVisible(false);
+            winMess.setLocationRelativeTo(null);
+            wincontain = winMess.getContentPane();
+
+            //Add winPanel
+            winPanel = new JPanel();
+            winPanel.setBounds(10, 20, 600, 40);
+            winPanel.setBackground(Color.BLACK);
+
+            //Congrat message
+            wintitle = new JLabel("Congratulation! Do you want to quit the game?");
+            wintitle.setForeground(Color.WHITE);
+            wintitle.setFont(miniFont);
+            winPanel.add(wintitle);
+
+            //YesPanel:
+            yesPanel = new JPanel();
+            yesPanel.setBounds(100, 100, 60, 40);
+            yesPanel.setBackground(Color.BLACK);
+
+            //Yes button:
+            yesButton = new JButton("YES");
+            yesButton.setBackground(Color.BLACK);
+            yesButton.setForeground(Color.WHITE);
+            yesButton.setFont(miniFont);
+            yesButton.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent event){
+                    System.exit(0);
+                }
+            });
+
+            yesPanel.add(yesButton);
+
+            //NoPanel:
+            noPanel = new JPanel();
+            noPanel.setBounds(400, 100, 60, 40);
+            noPanel.setBackground(Color.BLACK);
+
+            //No button:
+            noButton = new JButton("NO");
+            noButton.setBackground(Color.BLACK);
+            noButton.setForeground(Color.WHITE);
+            noButton.setFont(miniFont);
+            noButton.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent event){
+                    winMess.dispose();
+                    reset();
+                }
+            });
+
+            noPanel.add(noButton);
+
+
+            //Add all panels to wincontain
+            wincontain.add(winPanel);
+            wincontain.add(yesPanel);
+            wincontain.add(noPanel);
+        }
     }
 }

@@ -90,7 +90,7 @@ public class Game{
     *   + run(): generates a new game amp and resets the map.
     */
     public class RunGame implements Runnable{
-        private final JFrame game = new JFrame("Pac-Man");
+        private final JFrame game = new JFrame("TIP");
         private final int Width = 600;
         private final int Height = 600;
 
