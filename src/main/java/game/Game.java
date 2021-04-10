@@ -26,8 +26,8 @@ public class Game{
 
     //Container - contain the element need to display
     Container contain;                                
-    JPanel introPanel, startButtonPanel;
-    JButton startButton;
+    JPanel introPanel, startButtonPanel, exitButtonPanel;
+    JButton startButton, exitButton;
     JLabel titleGame;
 
     //Customize Font
@@ -64,25 +64,42 @@ public class Game{
         titleGame.setForeground(Color.WHITE);
         titleGame.setFont(titelfont);
 
-        //Create a "Start" button for the game:
+        //Create a "Start" button panel:
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(250,400,100,50);
+        startButtonPanel.setBounds(250,350,100,50);
         startButtonPanel.setBackground(Color.BLACK);
 
-        //Set up for the start button:
+        //Setting for the start button:
         startButton = new JButton("START");
         startButton.setBackground(Color.BLACK);
         startButton.setForeground(Color.WHITE);         //color of the text
         startButton.setFont(buttonfont);
         startButton.addActionListener(startHandler);
 
+        //Create a "Exit" button panel:
+        exitButtonPanel = new JPanel();
+        exitButtonPanel.setBounds(250, 400, 100, 50);
+        exitButtonPanel.setBackground(Color.BLACK);
+
+        //Setting for the exit button:
+        exitButton = new JButton("EXIT");
+        exitButton.setBackground(Color.BLACK);
+        exitButton.setForeground(Color.WHITE);         //color of the text
+        exitButton.setFont(buttonfont);
+        exitButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent event){
+                System.exit(0);
+            }
+        });
 
         //Add all panels to container
         introPanel.add(titleGame);
         startButtonPanel.add(startButton);
+        exitButtonPanel.add(exitButton);
 
         contain.add(introPanel);
         contain.add(startButtonPanel);
+        contain.add(exitButtonPanel);
     }
 
     /*
