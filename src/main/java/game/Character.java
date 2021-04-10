@@ -66,7 +66,7 @@ class Character extends activeObj {
 
     public void ResetPosition()
     {
-        MC.ReSetX(0);
+        MC.ReSetX(1);
         MC.ReSetY(6);
     }
 

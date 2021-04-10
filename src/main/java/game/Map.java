@@ -27,8 +27,8 @@ import game.Character;
  * - drawScore():       draws the score on the JPanel
  */
 public class Map extends JPanel {
-    private Wall wall;
-    private Character player;
+    private Wall wall = new Wall(MAP_WIDTH, MAP_HEIGHT, BLOCK_SIZE, NUM_BLOCKS);
+    private Character player = Character.getInstance(this);;
     
     private PrizeFactory prizefactory;
     private final int BASESCORE = 70;
@@ -37,7 +37,7 @@ public class Map extends JPanel {
     private final int DOOR_Y = 19;
     public Prize bonus[];
     public Prize reward[];
-    private Door door;
+    private Door door = new Door(wall,DOOR_X,DOOR_Y);
 
     private boolean playing = true;
     private JLabel EndMessage;
@@ -90,12 +90,10 @@ public class Map extends JPanel {
     }
 
     public void reset() {
-        wall = new Wall(MAP_WIDTH, MAP_HEIGHT, BLOCK_SIZE, NUM_BLOCKS);
         wall.reset();
-        player = Character.getInstance(this);
-        door = new Door(wall,DOOR_X,DOOR_Y);
 
         prizefactory = new PrizeFactory(wall,PRIZEVALUE);
+        player.ResetPosition();
         bonus = prizefactory.GetBonusArray();
         reward = prizefactory.GetRewardArray();
 
