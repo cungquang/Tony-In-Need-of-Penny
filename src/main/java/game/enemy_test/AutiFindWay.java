@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.lang.*;
-import game.enemy_test.MyPanel;
 import game.enemy_test.Eneposition;
 import game.*;
 public class AutiFindWay {
@@ -136,8 +135,6 @@ public class AutiFindWay {
 
 
         }
-
-        System.out.println("This is the wait list number:" + waitList.size());
         return waitList;
     }
 

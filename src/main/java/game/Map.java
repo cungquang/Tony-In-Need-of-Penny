@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.*;
+import javax.swing.plaf.TextUI;
+
+import game.enemy_test.punishment;
 
 /**
  * Map class: creates and draws the map
@@ -26,6 +29,7 @@ import javax.swing.*;
 public class Map extends JPanel {
     private Font miniFont = new Font("SansSerif", Font.BOLD, 15);
     private WinMessage winning = new WinMessage();
+    private punishment Punishment = new punishment();
     private Wall wall = new Wall(MAP_WIDTH, MAP_HEIGHT, BLOCK_SIZE, NUM_BLOCKS);
     private Character player = Character.getInstance(this);;
     
@@ -94,7 +98,10 @@ public class Map extends JPanel {
         player.ResetPosition();
         bonus = prizefactory.GetBonusArray();
         reward = prizefactory.GetRewardArray();
-
+        enemy1 = null;
+        enemy2 = null;
+        enemy1 = new Enemy(this, 10, 11);
+        enemy2 = new Enemy(this, 1, 19);
         requestFocusInWindow();
         repaint();
     }
@@ -110,6 +117,16 @@ public class Map extends JPanel {
         if(wall.getLocation(DOOR_X, DOOR_Y) == 9 & player.getdX() == door.getX() & player.getdY() == door.getY()){
             playing = false;
             winning.winMess.setVisible(true);
+            this.reset();
+            playing = true;
+        }
+
+        //game falling mode:
+        if((player.getdX() == enemy1.getdX() && player.getdY() == enemy1.getdY())
+           ||(player.getdX() == enemy2.getdX() && player.getdY() == enemy2.getdY()) ){
+
+            playing = false;
+            Punishment.pFrame.setVisible(true);
             this.reset();
             playing = true;
         }

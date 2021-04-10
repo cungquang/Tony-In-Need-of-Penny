@@ -5,7 +5,6 @@ import java.util.List;
 
 import game.enemy_test.AutiFindWay;
 import game.enemy_test.Eneposition;
-import game.enemy_test.MyPanel;
 import game.enemy_test.punishment;
 public class Enemy extends activeObj{
     private boolean IsActive = false;
@@ -56,9 +55,6 @@ public class Enemy extends activeObj{
 			// right
 			if (this.getdX() < fk.getX()) {
 				this.setdX(1);
-            }
-            if(this.getdX() == ch.getdX() && this.getdY() == ch.getdY()){
-                punishment puni = new punishment();
             }
 
         }
