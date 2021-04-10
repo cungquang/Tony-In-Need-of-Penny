@@ -75,7 +75,7 @@ public class Wall {
         }
     }
 
-    public void reset() {
+    public void reset(int door_X, int door_Y) {
         for (int i = 0; i < maze[0].length; i++) {
             for (int j = 0; j < maze.length; j++) {
                 if (maze[j][i] == 5) {
@@ -87,6 +87,8 @@ public class Wall {
                 }
             }
         }
+
+        this.setLocation(door_X, door_Y, 0);
     }
 
     public static int[][] getMaze() {

@@ -90,8 +90,7 @@ public class Map extends JPanel {
     }
 
     public void reset() {
-        wall.reset();
-
+        wall.reset(DOOR_X, DOOR_Y);
         prizefactory = new PrizeFactory(wall,PRIZEVALUE);
         player.ResetPosition();
         bonus = prizefactory.GetBonusArray();
@@ -130,7 +129,7 @@ public class Map extends JPanel {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paint(Graphics g) {
         super.paintComponent(g);
         wall.draw(g);
         drawScore(g);

@@ -68,6 +68,9 @@ class Character extends activeObj {
     {
         MC.ReSetX(1);
         MC.ReSetY(6);
+        MC.Reward_Score = 0;
+        MC.Bonus_Score = 0;
+        MC.IsAlive = true;
     }
 
     public void draw(Graphics g) {

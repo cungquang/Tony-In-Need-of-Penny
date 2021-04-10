@@ -16,6 +16,9 @@ import game.Map;
 
 
 public class Game{
+    //Map of the game:
+     Map map = new Map();
+    
     //Frame - Lowest level of display
     JFrame window;                                              
     final int Width = 600;
@@ -31,8 +34,9 @@ public class Game{
     Font titelfont = new Font("SansSerif", Font.BOLD, 30);
     Font buttonfont = new Font("SansSerif", Font.BOLD, 15);
 
+    //handle the "START" button
     TitleScreenHandler startHandler = new TitleScreenHandler();
-
+    ResetHandler resetHandler = new ResetHandler();
 
     public static void main(String[] arg) {
         new Game();
@@ -90,17 +94,33 @@ public class Game{
         private final int Width = 600;
         private final int Height = 600;
 
+        JPanel resetPanel;
+        JButton resetButton;
 
         public void run() {
-            Map map = new Map();
-            game.add(map, BorderLayout.CENTER);
-
+            
             game.setPreferredSize(new Dimension(Width, Height));
             game.pack();
             game.setResizable(true);
             game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             game.setVisible(true);
             game.setLocationRelativeTo(null);
+
+            //Add resetButton into panel:
+            resetPanel = new JPanel();
+            resetPanel.setBounds(0,400,600,100);
+            resetPanel.setBackground(Color.WHITE);  
+            
+            resetButton = new JButton("RESET");
+            resetButton.setBackground(Color.WHITE);
+            resetButton.setForeground(Color.BLACK);
+            resetButton.setFont(buttonfont);
+            resetButton.addActionListener(resetHandler);
+            resetPanel.add(resetButton);
+
+            //Add all componenets into the frame game:
+            game.add(resetPanel, BorderLayout.NORTH);
+            game.add(map, BorderLayout.CENTER);
 
             map.reset();
         }
@@ -119,4 +139,15 @@ public class Game{
             t.start();  
         }
     }
+
+    /*
+    * Class for "RESET" button - implements ActionListener
+    * 
+    */
+    public class ResetHandler implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+            map.reset();
+        }
+    }
+
 }

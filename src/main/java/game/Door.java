@@ -39,5 +39,5 @@ public class Door{
 		wall.setLocation(this.xCoord, this.yCoord, this.DoorVal);
         g.setColor(Color.CYAN);
         g.fillRect(xCoord * blockdimension, yCoord*blockdimension, blockdimension, blockdimension);
-	}
+	}	
 }
