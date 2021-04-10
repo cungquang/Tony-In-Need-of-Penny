@@ -6,6 +6,12 @@ import java.util.List;
 import java.lang.*;
 import game.enemy_test.Eneposition;
 import game.*;
+/**
+ * zhangailist : The walls in enemy's minds; so that enemy can find the way:
+ * Eneposition : Enemy's way to record the message of the path and the wall
+ * closedlist : The path the enemy has walked or calculated
+ * Openlist : list list of queue wait to be calcualted
+ */
 public class AutiFindWay {
     public static Eneposition beginEne = null;
     public static Eneposition endEne = null;
@@ -40,7 +46,7 @@ public class AutiFindWay {
 
     public AutiFindWay(){
         
-        
+        //read the information of the map;
 		for (int i = 0; i < 21; i++) {
 			for (int j = 0; j < 20; j++) {
 				if (maze[i][j]== 1) {
@@ -52,7 +58,10 @@ public class AutiFindWay {
 			}
 		}
     }
-
+    //this is the main part of find the way
+    /** 
+     * waitlist: the path of optimized the path to get the target
+    */
     public List<Eneposition> getWayLine(int distX, int distY, int localX, int localY) {
         List<Eneposition> waitList = new ArrayList<>();
         List<Eneposition> tempList = null;
@@ -66,6 +75,7 @@ public class AutiFindWay {
         }
 
         openList.addAll(tempList);
+        //calculate the F G and  H in astar in the open list
         for (int i = 0; i < openList.size(); i++) {
 
             Eneposition temp = openList.get(i);
@@ -112,6 +122,8 @@ public class AutiFindWay {
 
         }
 
+        //after all the panel in the map is finided calculate , then from the calculated map, pick the the least H one by one
+
         for (int i = 0; i < closedList.size(); i++) {
             if (waitList.size() > 0) {
                 if (waitList.get(waitList.size() - 1).getPreviousFK().equals(closedList.get(i))) {
@@ -137,6 +149,9 @@ public class AutiFindWay {
         }
         return waitList;
     }
+
+    // from one block , get the other block around
+    // if the around is wall, then resist  it from the open list
 
     public List<Eneposition> around(Eneposition Enemy) {
         List<Eneposition> aroundList = new ArrayList<Eneposition>();
@@ -172,6 +187,7 @@ public class AutiFindWay {
         return aroundList;
     }
 
+    // get F G and H in astar algorithm
     public void getFGH(List<Eneposition> list, Eneposition currFk) {
         if (list != null && list.size() > 0) {
             for (Eneposition fk : list) {

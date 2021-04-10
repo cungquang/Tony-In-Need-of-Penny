@@ -6,8 +6,14 @@ import java.util.List;
 import game.enemy_test.AutiFindWay;
 import game.enemy_test.Eneposition;
 import game.enemy_test.punishment;
+
+
+
+/**
+ * Create the enemy inherited from the active object
+ * Move enemy: apply the autofindway to find the optimized way to get close to the player
+ */
 public class Enemy extends activeObj{
-    private boolean IsActive = false;
     private List<Eneposition> wayList;
 
     public Enemy(Map m, int x, int y){
@@ -29,11 +35,6 @@ public class Enemy extends activeObj{
             
             AutiFindWay afw = new AutiFindWay();
             wayList = afw.getWayLine(distanceX, distanceY, localX, localY);
-            
-		    if (wayList == null || wayList.size() == 0) {
-			    System.out.println("-----------------------------There is no solution");
-			    return;
-            }
             
             Eneposition fk = wayList.get(wayList.size()-2);
             //System.out.println(distanceX+"+"+distanceY+"+"+localX+"+"+localY);
