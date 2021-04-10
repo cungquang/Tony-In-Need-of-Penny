@@ -37,7 +37,7 @@ public class Map extends JPanel {
     private final int DOOR_Y = 19;
     public Prize bonus[];
     public Prize reward[];
-    private Door door = new Door(wall,DOOR_X,DOOR_Y);
+    private final Door door = new Door(wall,DOOR_X,DOOR_Y);
 
     private boolean playing = true;
     private JLabel EndMessage;

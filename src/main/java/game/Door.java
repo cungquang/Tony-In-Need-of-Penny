@@ -40,4 +40,8 @@ public class Door{
         g.setColor(Color.CYAN);
         g.fillRect(xCoord * blockdimension, yCoord*blockdimension, blockdimension, blockdimension);
 	}	
+
+	public void resetDoor(Wall map){
+		map.setLocation(xCoord, yCoord, 0);
+	}
 }

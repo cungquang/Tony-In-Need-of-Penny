@@ -87,8 +87,6 @@ public class Wall {
                 }
             }
         }
-
-        this.setLocation(door_X, door_Y, 0);
     }
 
     public static int[][] getMaze() {
