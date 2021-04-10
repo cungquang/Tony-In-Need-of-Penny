@@ -1,9 +1,17 @@
 package game;
 
+/**
+ * WinMessage class: creates the Message for Winning
+ * 
+ * methods:
+ * + WinMessage(): the constructor for the class WinMessage
+ * 		+ yesButton(): close the entire game
+ *		+ noButton(): go back to the game
+ */
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 
 public class WinMessage{
     public JFrame winMess = new JFrame("Winner");
