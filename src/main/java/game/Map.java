@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.*;
 
-import game.Wall;
-import game.Character;
-
 /**
  * Map class: creates and draws the map
  * 
@@ -173,83 +170,4 @@ public class Map extends JPanel {
         
     }
 
-
-    public class WinMessage{
-        public JFrame winMess = new JFrame("Winner");
-        private int widthMess = 600;
-        private int heightMess = 200;
-        private Container wincontain;
-
-        private JPanel winPanel, yesPanel, noPanel;
-        private JLabel wintitle;
-        private JButton yesButton, noButton;
-
-        private Font miniFont = new Font("SansSerif", Font.BOLD, 18);
-
-
-        public WinMessage(){
-            winMess.setSize(new Dimension(widthMess, heightMess));
-            winMess.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            winMess.getContentPane().setBackground(Color.BLACK);
-            winMess.setResizable(true);
-            winMess.setLayout(null);
-            winMess.setVisible(false);
-            winMess.setLocationRelativeTo(null);
-            wincontain = winMess.getContentPane();
-
-            //Add winPanel
-            winPanel = new JPanel();
-            winPanel.setBounds(10, 20, 600, 40);
-            winPanel.setBackground(Color.BLACK);
-
-            //Congrat message
-            wintitle = new JLabel("Congratulation! Do you want to quit the game?");
-            wintitle.setForeground(Color.WHITE);
-            wintitle.setFont(miniFont);
-            winPanel.add(wintitle);
-
-            //YesPanel:
-            yesPanel = new JPanel();
-            yesPanel.setBounds(100, 100, 60, 40);
-            yesPanel.setBackground(Color.BLACK);
-
-            //Yes button:
-            yesButton = new JButton("YES");
-            yesButton.setBackground(Color.BLACK);
-            yesButton.setForeground(Color.WHITE);
-            yesButton.setFont(miniFont);
-            yesButton.addActionListener(new ActionListener(){
-                public void actionPerformed(ActionEvent event){
-                    System.exit(0);
-                }
-            });
-
-            yesPanel.add(yesButton);
-
-            //NoPanel:
-            noPanel = new JPanel();
-            noPanel.setBounds(400, 100, 60, 40);
-            noPanel.setBackground(Color.BLACK);
-
-            //No button:
-            noButton = new JButton("NO");
-            noButton.setBackground(Color.BLACK);
-            noButton.setForeground(Color.WHITE);
-            noButton.setFont(miniFont);
-            noButton.addActionListener(new ActionListener(){
-                public void actionPerformed(ActionEvent event){
-                    winMess.dispose();
-                    reset();
-                }
-            });
-
-            noPanel.add(noButton);
-
-
-            //Add all panels to wincontain
-            wincontain.add(winPanel);
-            wincontain.add(yesPanel);
-            wincontain.add(noPanel);
-        }
-    }
 }
