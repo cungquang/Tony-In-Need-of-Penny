@@ -108,7 +108,7 @@ public class Game{
 
             //Add resetButton into panel:
             resetPanel = new JPanel();
-            resetPanel.setBounds(0,400,600,100);
+            resetPanel.setBounds(0,400,500,100);
             resetPanel.setBackground(Color.WHITE);  
             
             resetButton = new JButton("RESET");

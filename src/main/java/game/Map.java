@@ -119,13 +119,20 @@ public class Map extends JPanel {
 
     //Draw Scores
     private void drawScore(Graphics g) {
-        Font smallFont = new Font("SansSerif", Font.BOLD, 18);
+        Font smallFont = new Font("SansSerif", Font.BOLD, 15);
         g.setFont(smallFont);
         g.setColor(Color.WHITE);
-        String Gs = "Reward_Score: " + player.getReward_Score();
-        String Bs = "Bonus_Score: "+ player.getBonus_Score();
-        g.drawString(Gs, 20, 530+ 16);
-        g.drawString(Bs, 330, 530 + 16);
+
+        String rewardstr = "Reward:"; 
+        String rewardscore = "" + player.getReward_Score();
+        String bonusstr = "Bonus:";
+        String bonusscore = "" + player.getBonus_Score();
+
+        g.drawString(rewardstr, 510, 50 + 16);
+        g.drawString(rewardscore, 510, 100 + 16);
+        g.drawString(bonusstr, 510, 150 + 16);
+        g.drawString(bonusscore, 510, 200 + 16);
+
     }
 
     @Override
