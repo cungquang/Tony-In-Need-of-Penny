@@ -22,7 +22,9 @@ public class WinMessage{
     private JPanel winPanel = new JPanel();
     private JPanel yesPanel = new JPanel();
     private JPanel noPanel = new JPanel();
-    private JLabel wintitle = new JLabel("Congratulation! Do you want to quit the game?");
+    private JPanel scorePanel = new JPanel();
+    private JLabel wintitle = new JLabel("Congratulation! Do you want to try again?");
+    private JLabel scoretitle = new JLabel();
     private JButton yesButton = new JButton("YES");
     private JButton noButton = new JButton("NO");
 
@@ -49,8 +51,7 @@ public class WinMessage{
         winPanel.add(wintitle);
 
         //YesPanel:
-        yesPanel = new JPanel();
-        yesPanel.setBounds(100, 100, 60, 40);
+        yesPanel.setBounds(160, 100, 60, 40);
         yesPanel.setBackground(Color.BLACK);
 
         //Yes button:
@@ -59,14 +60,13 @@ public class WinMessage{
         yesButton.setFont(miniFont);
         yesButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
-                System.exit(0);
+                winMess.dispose();
             }
         });
 
         yesPanel.add(yesButton);
 
         //NoPanel:
-        noPanel = new JPanel();
         noPanel.setBounds(400, 100, 60, 40);
         noPanel.setBackground(Color.BLACK);
 
@@ -76,16 +76,30 @@ public class WinMessage{
         noButton.setFont(miniFont);
         noButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
-                winMess.dispose();
+                System.exit(0);
             }
         });
-
         noPanel.add(noButton);
-
 
         //Add all panels to wincontain
         wincontain.add(winPanel);
         wincontain.add(yesPanel);
         wincontain.add(noPanel);
+    }
+
+    public void setScore(int score){
+        String temp = "Score: " + score;
+
+        //ScorePanel:
+        scorePanel.setBounds(10, 60, 600, 40);
+        scorePanel.setBackground(Color.BLACK);
+
+        //Score message:
+        scoretitle.setText(temp);
+        scoretitle.setForeground(Color.WHITE);
+        scoretitle.setFont(miniFont);
+        scorePanel.add(scoretitle);
+
+        wincontain.add(scorePanel);
     }
 }

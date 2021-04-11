@@ -28,10 +28,10 @@ import game.enemy_test.punishment;
  */
 public class Map extends JPanel {
     private Font miniFont = new Font("SansSerif", Font.BOLD, 15);
-    private WinMessage winning = new WinMessage();
     private punishment Punishment = new punishment();
     private Wall wall = new Wall(MAP_WIDTH, MAP_HEIGHT, BLOCK_SIZE, NUM_BLOCKS);
-    private Character player = Character.getInstance(this);;
+    private Character player = Character.getInstance(this);
+    private WinMessage winning = new WinMessage();
     
     private PrizeFactory prizefactory;
     private final int BASESCORE = 70;
@@ -93,7 +93,8 @@ public class Map extends JPanel {
     }
 
     public void reset() {
-        wall.reset(DOOR_X, DOOR_Y);
+        door.resetDoor(wall);
+        wall.reset();
         prizefactory = new PrizeFactory(wall,PRIZEVALUE);
         player.ResetPosition();
         bonus = prizefactory.GetBonusArray();
@@ -116,6 +117,7 @@ public class Map extends JPanel {
         //game wining mode:
         if(wall.getLocation(DOOR_X, DOOR_Y) == 9 & player.getdX() == door.getX() & player.getdY() == door.getY()){
             playing = false;
+            winning.setScore(player.getReward_Score()+player.getBonus_Score());
             winning.winMess.setVisible(true);
             this.reset();
             playing = true;
