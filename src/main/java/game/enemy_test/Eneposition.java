@@ -15,14 +15,10 @@ public class Eneposition {
 		this.previousFK = fk;
     }
     
-    public Eneposition(MyPanel myPpanel){
-		this.x = myPpanel.getX() / MyPanel.size;
-		this.y = myPpanel.getY() / MyPanel.size;
-    }
-    
     static public final int size = 25;
 	public int x;//x position of the enemy
 	public int y;//y position of the enemy
+	// the value in appling a star alogoritiom
 	private int F;
 	private int G;
 	private int H;

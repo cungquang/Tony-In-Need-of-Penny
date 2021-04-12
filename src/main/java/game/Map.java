@@ -11,9 +11,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.*;
+import javax.swing.plaf.TextUI;
 
-import game.Wall;
-import game.Character;
+import game.enemy_test.punishment;
 
 /**
  * Map class: creates and draws the map
@@ -27,8 +27,11 @@ import game.Character;
  * - drawScore():       draws the score on the JPanel
  */
 public class Map extends JPanel {
-    private Wall wall;
-    private Character player;
+    private Font miniFont = new Font("SansSerif", Font.BOLD, 15);
+    private punishment Punishment = new punishment();
+    private Wall wall = new Wall(MAP_WIDTH, MAP_HEIGHT, BLOCK_SIZE, NUM_BLOCKS);
+    private Character player = Character.getInstance(this);
+    private WinMessage winning = new WinMessage();
     
     private PrizeFactory prizefactory;
     private final int BASESCORE = 70;
@@ -37,7 +40,7 @@ public class Map extends JPanel {
     private final int DOOR_Y = 19;
     public Prize bonus[];
     public Prize reward[];
-    private Door door;
+    private final Door door = new Door(wall,DOOR_X,DOOR_Y);
 
     private boolean playing = true;
     private JLabel EndMessage;
@@ -51,9 +54,9 @@ public class Map extends JPanel {
 
     private Enemy enemy1 = new Enemy(this, 10, 11);
     private Enemy enemy2 = new Enemy(this, 1, 19);
-    private Enemy enemy3 = new Enemy(this, 18,18);
-    private Enemy enemy4 = new Enemy(this, 18, 3);
-    private Enemy enemy5 = new Enemy(this, 6, 6);
+    //private Enemy enemy3 = new Enemy(this, 18,18);
+    //private Enemy enemy4 = new Enemy(this, 18, 3);
+    //private Enemy enemy5 = new Enemy(this, 6, 6);
 
 
     public Map() {
@@ -90,15 +93,16 @@ public class Map extends JPanel {
     }
 
     public void reset() {
-        wall = new Wall(MAP_WIDTH, MAP_HEIGHT, BLOCK_SIZE, NUM_BLOCKS);
+        door.resetDoor(wall);
         wall.reset();
-        player = Character.getInstance(this);
-        door = new Door(wall,DOOR_X,DOOR_Y);
-
         prizefactory = new PrizeFactory(wall,PRIZEVALUE);
+        player.ResetPosition();
         bonus = prizefactory.GetBonusArray();
         reward = prizefactory.GetRewardArray();
-
+        enemy1 = null;
+        enemy2 = null;
+        enemy1 = new Enemy(this, 10, 11);
+        enemy2 = new Enemy(this, 1, 19);
         requestFocusInWindow();
         repaint();
     }
@@ -113,6 +117,20 @@ public class Map extends JPanel {
         //game wining mode:
         if(wall.getLocation(DOOR_X, DOOR_Y) == 9 & player.getdX() == door.getX() & player.getdY() == door.getY()){
             playing = false;
+            winning.setScore(player.getReward_Score()+player.getBonus_Score());
+            winning.winMess.setVisible(true);
+            this.reset();
+            playing = true;
+        }
+
+        //game falling mode:
+        if((player.getdX() == enemy1.getdX() && player.getdY() == enemy1.getdY())
+           ||(player.getdX() == enemy2.getdX() && player.getdY() == enemy2.getdY()) ){
+
+            playing = false;
+            Punishment.pFrame.setVisible(true);
+            this.reset();
+            playing = true;
         }
     }
 
@@ -122,17 +140,22 @@ public class Map extends JPanel {
 
     //Draw Scores
     private void drawScore(Graphics g) {
-        Font smallFont = new Font("SansSerif", Font.BOLD, 18);
-        g.setFont(smallFont);
+        g.setFont(miniFont);
         g.setColor(Color.WHITE);
-        String Gs = "Reward_Score: " + player.getReward_Score();
-        String Bs = "Bonus_Score: "+ player.getBonus_Score();
-        g.drawString(Gs, 20, 530+ 16);
-        g.drawString(Bs, 330, 530 + 16);
+
+        String rewardstr = "Reward:"; 
+        String rewardscore = "" + player.getReward_Score();
+        String bonusstr = "Bonus:";
+        String bonusscore = "" + player.getBonus_Score();
+
+        g.drawString(rewardstr, 510, 50 + 16);
+        g.drawString(rewardscore, 510, 100 + 16);
+        g.drawString(bonusstr, 510, 150 + 16);
+        g.drawString(bonusscore, 510, 200 + 16);
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paint(Graphics g) {
         super.paintComponent(g);
         wall.draw(g);
         drawScore(g);
@@ -165,4 +188,5 @@ public class Map extends JPanel {
         //enemy5.draw(g);
         
     }
+
 }
