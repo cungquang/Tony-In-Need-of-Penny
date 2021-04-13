@@ -61,6 +61,12 @@ public class Map extends JPanel {
 
     public Map() {
         setBackground(Color.GRAY);
+
+        //add Prizes
+        prizefactory = new PrizeFactory(wall,PRIZEVALUE);
+        bonus = prizefactory.GetBonusArray();
+        reward = prizefactory.GetRewardArray();
+        
         Timer timer = new Timer(INTERVAL, new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 gameTick();
