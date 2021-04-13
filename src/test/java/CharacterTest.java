@@ -17,39 +17,10 @@ class CharacterTest {
         MC = Character.getInstance(m);
     }
 
-    @Test
-    @DisplayName("Player should get Reward Score when he meets a reward")
-    void Test_getReward_Score() {
-        MC.ResetPosition();
-        MC.move('u');
-        MC.move('u');
-        MC.IsPrize();
-        assertEquals(5,MC.getReward_Score());
-    }
 
     @Test
-    @DisplayName("Player should get Bonus Score when he meets a bonus")
+    @DisplayName("Player should get Bonus Score when he meets a Prize")
     void Test_getBonus_Score() {
-        MC.ResetPosition();
-        for(int i=0;i<5;i++)
-        {
-            MC.move('u');
-            MC.IsPrize();
-        }
-        System.out.println(MC.getdY());
-        assertEquals(10,MC.getBonus_Score());
-    }
-
-    @Test
-    void Test_resetPosition() {
-        MC.ResetPosition();
-        assertEquals(1,MC.getdX());
-        assertEquals(6,MC.getdY());
-    }
-
-
-    @Test
-    void Test_isPrize() {
         MC.ResetPosition();
         for(int i=0;i<5;i++)
         {
@@ -60,7 +31,18 @@ class CharacterTest {
         assertEquals(15,MC.getReward_Score());
         //should get 1 bonus, each is 10 points;
         assertEquals(10,MC.getBonus_Score());
+
     }
+
+    @Test
+    void Test_resetPosition() {
+        MC.ResetPosition();
+        assertEquals(1,MC.getdX());
+        assertEquals(6,MC.getdY());
+    }
+
+
+
 
     @Test
     @DisplayName("Player will move if it got direction order expect there is a wall")
