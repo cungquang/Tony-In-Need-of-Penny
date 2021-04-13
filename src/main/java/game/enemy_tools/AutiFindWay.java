@@ -1,11 +1,12 @@
-package game.enemy_test;
+package game.enemy_tools;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import java.lang.*;
-import game.enemy_test.Eneposition;
+
 import game.*;
+import game.enemy_tools.Eneposition;
 /**
  * zhangailist : The walls in enemy's minds; so that enemy can find the way:
  * Eneposition : Enemy's way to record the message of the path and the wall
@@ -114,11 +115,10 @@ public class AutiFindWay {
                     openList.add(fk);
                 }
             }
-            // System.out.println("all
-            // fail--------------------------------------------------------------------------------------------"+i);
-
+        
             openList.remove(i);
             i--;
+            
 
         }
 
@@ -147,6 +147,8 @@ public class AutiFindWay {
 
 
         }
+        
+        System.out.println("way list is " + waitList.size() );
         return waitList;
     }
 

@@ -27,7 +27,7 @@ import game.Wall;
  *
  */
 
-class Character extends activeObj {
+public class Character extends activeObj {
     private static Character MC = null;
     private int Reward_Score;
     private int Bonus_Score;

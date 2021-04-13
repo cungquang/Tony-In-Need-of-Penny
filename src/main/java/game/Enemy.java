@@ -3,9 +3,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.List;
 
-import game.enemy_test.AutiFindWay;
-import game.enemy_test.Eneposition;
-import game.enemy_test.punishment;
+import game.enemy_tools.AutiFindWay;
+import game.enemy_tools.Eneposition;
+import game.enemy_tools.punishment;
 
 
 
@@ -31,6 +31,10 @@ public class Enemy extends activeObj{
         int distanceY = ch.getdY();
         int localX = this.getdX();
         int localY = this.getdY();
+        if(Math.abs(distanceX - localX)+Math.abs(distanceY-localY) == 0){
+            return;
+        }
+
         if(Math.abs(distanceX - localX)+Math.abs(distanceY-localY) <= 5){
             
             AutiFindWay afw = new AutiFindWay();
