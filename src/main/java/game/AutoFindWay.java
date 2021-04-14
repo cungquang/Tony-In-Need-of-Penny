@@ -5,7 +5,7 @@ import java.util.List;
 
 import java.lang.*;
 /**
- * zhangailist : The walls in enemy's minds; so that enemy can find the way:
+ * walllist : The walls in enemy's minds; so that enemy can find the way:
  * Eneposition : Enemy's way to record the message of the path and the wall
  * closedlist : The path the enemy has walked or calculated
  * Openlist : list list of queue wait to be calcualted
