@@ -6,7 +6,7 @@ import java.util.List;
 import java.awt.*;
 import javax.swing.ImageIcon;
 
-import game.enemy_tools.AutiFindWay;
+import game.enemy_tools.AutoFindWay;
 import game.enemy_tools.Eneposition;
 import game.enemy_tools.punishment;
 
@@ -31,7 +31,7 @@ public class Enemy extends activeObj{
         g.drawImage(imageIcon, this.getdX()*25, this.getdY()*25, 25, 25, null);
     }
 
-    public void move_enemy(Character ch){
+    public void move_Enemy(Character ch){
         int distanceX = ch.getdX();
         int distanceY = ch.getdY();
         int localX = this.getdX();
@@ -42,7 +42,7 @@ public class Enemy extends activeObj{
 
         if(Math.abs(distanceX - localX)+Math.abs(distanceY-localY) <= 5){
             
-            AutiFindWay afw = new AutiFindWay();
+            AutoFindWay afw = new AutoFindWay();
             wayList = afw.getWayLine(distanceX, distanceY, localX, localY);
             
             Eneposition fk = wayList.get(wayList.size()-2);

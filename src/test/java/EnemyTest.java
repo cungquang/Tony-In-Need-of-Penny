@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 
 import game.*;
 import game.Character;
-import game.enemy_tools.AutiFindWay;
+import game.enemy_tools.AutoFindWay;
 import game.enemy_tools.Eneposition;
 
 import java.lang.Math;
@@ -21,7 +21,7 @@ public class EnemyTest {
         assertEquals(right_distance, applyAutofindway(18, 19, 1, 1));
     } 
     private int applyAutofindway(int distX, int distY, int localX, int localY) {
-        AutiFindWay AFW = new AutiFindWay();
+        AutoFindWay AFW = new AutoFindWay();
         List<Eneposition> path = new ArrayList<>();
 
         path = AFW.getWayLine(distX, distY, localX, localY);
@@ -40,7 +40,7 @@ public class EnemyTest {
         Enemy ene = new Enemy(m, 1, 1);
         System.out.println(" distance form the enemy can charater is 5, it need 5 steps to got to the character");
         for(int i = 0;i<5;i++){
-            ene.move_enemy(ch);
+            ene.move_Enemy(ch);
             System.out.println(ch.getdX()+"+"+ch.getdY()+"+"+ene.getdX()+"+"+ene.getdY());
         }
         assertEquals(ch.getdX(), ene.getdX());

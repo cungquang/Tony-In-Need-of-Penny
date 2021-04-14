@@ -88,8 +88,8 @@ public class Map extends JPanel {
                 } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
                     i = player.move('d');
                 }
-                if(i == 0){enemy1.move_enemy(player);
-                           enemy2.move_enemy(player);
+                if(i == 0){enemy1.move_Enemy(player);
+                           enemy2.move_Enemy(player);
                            //enemy3.move_enemy(player);
                            //enemy4.move_enemy(player);
                            //enemy5.move_enemy(player);

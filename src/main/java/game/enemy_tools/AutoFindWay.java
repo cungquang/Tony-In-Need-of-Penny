@@ -13,12 +13,12 @@ import game.enemy_tools.Eneposition;
  * closedlist : The path the enemy has walked or calculated
  * Openlist : list list of queue wait to be calcualted
  */
-public class AutiFindWay {
+public class AutoFindWay {
     public static Eneposition beginEne = null;
     public static Eneposition endEne = null;
-    public List<Eneposition> zhangaiList = new ArrayList<>();
-    public List<Eneposition> closedList = new ArrayList<>();
-    public List<Eneposition> openList = new ArrayList<>();
+    public List<Eneposition> wallList = new ArrayList<>();
+    public List<Eneposition> calutaledList = new ArrayList<>();
+    public List<Eneposition> uncalculatedList = new ArrayList<>();
 
     private static int[][] maze = {
         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -45,7 +45,7 @@ public class AutiFindWay {
 
     };
 
-    public AutiFindWay(){
+    public AutoFindWay(){
         
         //read the information of the map;
 		for (int i = 0; i < 21; i++) {
@@ -54,7 +54,7 @@ public class AutiFindWay {
 					int y = i;
 					int x = j;
                     Eneposition wall = new Eneposition(x, y);
-					zhangaiList.add(wall);
+					wallList.add(wall);
 				} 
 			}
 		}
@@ -70,24 +70,24 @@ public class AutiFindWay {
         beginEne.setG(0);
         endEne = new Eneposition(distX, distY);
 
-        tempList = around(beginEne);
+        tempList = getAroudBlock(beginEne);
         if (tempList == null || tempList.size() == 0) {
             return waitList;
         }
 
-        openList.addAll(tempList);
+        uncalculatedList.addAll(tempList);
         //calculate the F G and  H in astar in the open list
-        for (int i = 0; i < openList.size(); i++) {
+        for (int i = 0; i < uncalculatedList.size(); i++) {
 
-            Eneposition temp = openList.get(i);
-            tempList = around(temp);
+            Eneposition temp = uncalculatedList.get(i);
+            tempList = getAroudBlock(temp);
             if (tempList == null || tempList.size() == 0) {
                 continue;
             }
             if (tempList.contains(endEne)) {
                 for (Eneposition obj : tempList) {
                     if (obj.equals(endEne)) {
-                        closedList.add(obj);
+                        calutaledList.add(obj);
                         break;
                     }
                 }
@@ -95,10 +95,10 @@ public class AutiFindWay {
 
             }
             for (Eneposition fk : tempList) {
-                if (openList.contains(fk)) {
+                if (uncalculatedList.contains(fk)) {
 
 
-                    for (Eneposition openFk : openList) {
+                    for (Eneposition openFk : uncalculatedList) {
                         if (openFk.equals(fk)) {
                             if (openFk.getG() > fk.getG()) {
                                 openFk.setG(fk.getG());
@@ -112,11 +112,11 @@ public class AutiFindWay {
                         }
                     }
                 } else {
-                    openList.add(fk);
+                    uncalculatedList.add(fk);
                 }
             }
         
-            openList.remove(i);
+            uncalculatedList.remove(i);
             i--;
             
 
@@ -124,23 +124,23 @@ public class AutiFindWay {
 
         //after all the panel in the map is finided calculate , then from the calculated map, pick the the least H one by one
 
-        for (int i = 0; i < closedList.size(); i++) {
+        for (int i = 0; i < calutaledList.size(); i++) {
             if (waitList.size() > 0) {
-                if (waitList.get(waitList.size() - 1).getPreviousFK().equals(closedList.get(i))) {
-                    waitList.add(closedList.get(i));
-                    if (closedList.get(i).equals(beginEne)) {
+                if (waitList.get(waitList.size() - 1).getPreviousFK().equals(calutaledList.get(i))) {
+                    waitList.add(calutaledList.get(i));
+                    if (calutaledList.get(i).equals(beginEne)) {
                         break;
                     }
-                    closedList.remove(closedList.get(i));
+                    calutaledList.remove(calutaledList.get(i));
                     i = -1;
 
                 }
                 continue;
             }
 
-            if(closedList.get(i).equals(endEne)){
-				waitList.add(closedList.get(i));
-				closedList.remove(closedList.get(i));
+            if(calutaledList.get(i).equals(endEne)){
+				waitList.add(calutaledList.get(i));
+				calutaledList.remove(calutaledList.get(i));
 				i = -1;
 				continue;
 			}
@@ -155,36 +155,36 @@ public class AutiFindWay {
     // from one block , get the other block around
     // if the around is wall, then resist  it from the open list
 
-    public List<Eneposition> around(Eneposition Enemy) {
+    public List<Eneposition> getAroudBlock(Eneposition Enemy) {
         List<Eneposition> aroundList = new ArrayList<Eneposition>();
         if (Enemy.getY() - 1 >= 0) {
 
             Eneposition tempPoistion = new Eneposition(Enemy.getX(), Enemy.getY() - 1, Enemy);
-            if (!zhangaiList.contains(tempPoistion) && !closedList.contains(tempPoistion)) {
+            if (!wallList.contains(tempPoistion) && !calutaledList.contains(tempPoistion)) {
                 aroundList.add(tempPoistion);
             }
         }
 
         if (Enemy.getY() + 1 <= 20) {
             Eneposition tempPoistion = new Eneposition(Enemy.getX(), Enemy.getY() + 1, Enemy);
-            if (!zhangaiList.contains(tempPoistion) && !closedList.contains(tempPoistion)) {
+            if (!wallList.contains(tempPoistion) && !calutaledList.contains(tempPoistion)) {
                 aroundList.add(tempPoistion);
             }
         }
 
         if (Enemy.getX() - 1 >= 0) {
             Eneposition tempPoistion = new Eneposition(Enemy.getX()-1, Enemy.getY(), Enemy);
-            if (!zhangaiList.contains(tempPoistion) && !closedList.contains(tempPoistion)) {
+            if (!wallList.contains(tempPoistion) && !calutaledList.contains(tempPoistion)) {
                 aroundList.add(tempPoistion);
             }
         }
         if (Enemy.getX() + 1 <= 20) {
             Eneposition tempPoistion = new Eneposition(Enemy.getX()+1, Enemy.getY(), Enemy);
-            if (!zhangaiList.contains(tempPoistion) && !closedList.contains(tempPoistion)) {
+            if (!wallList.contains(tempPoistion) && !calutaledList.contains(tempPoistion)) {
                 aroundList.add(tempPoistion);
             }
         }
-        closedList.add(Enemy);
+        calutaledList.add(Enemy);
         getFGH(aroundList, Enemy);
         return aroundList;
     }
