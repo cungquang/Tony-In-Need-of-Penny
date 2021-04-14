@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import game.Map;
 import game.Character;
-import game.enemy_tools.*;
 class CharacterTest {
     private Map m;
     private Character MC;

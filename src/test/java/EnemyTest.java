@@ -8,8 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 
 import game.*;
 import game.Character;
-import game.enemy_tools.AutoFindWay;
-import game.enemy_tools.EnemyBlock;
 
 import java.lang.Math;
 

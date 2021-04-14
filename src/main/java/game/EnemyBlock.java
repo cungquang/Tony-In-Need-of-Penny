@@ -1,4 +1,4 @@
-package game.enemy_tools;
+package game;
 
 
 public class EnemyBlock {

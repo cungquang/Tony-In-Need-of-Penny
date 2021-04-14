@@ -1,4 +1,4 @@
-package game.enemy_tools;
+package game;
 import javax.swing.*;
 
 import game.Map;

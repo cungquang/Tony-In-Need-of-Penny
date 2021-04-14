@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.*;
 import javax.swing.plaf.TextUI;
-
-import game.enemy_tools.punishment;
+;
 
 /**
  * Map class: creates and draws the map
