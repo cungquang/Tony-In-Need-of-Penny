@@ -95,15 +95,12 @@ public class AutoFindWay {
                 if (uncalculatedList.contains(fk)) {
 
 
-                    for (EnemyBlock openFk : uncalculatedList) {
-                        if (openFk.equals(fk)) {
-                            if (openFk.getG() > fk.getG()) {
-                                openFk.setG(fk.getG());
-                                openFk.setF(openFk.getG() + openFk.getH());
-                                openFk.setPreviousFK(fk.getPreviousFK());
-
-                                System.out.println("The X is:" + openFk.getX() + "The y is" + openFk.getY()
-                                        + "The F is " + openFk.getF());
+                    for (EnemyBlock uncalculatedEnemyBlock : uncalculatedList) {
+                        if (uncalculatedEnemyBlock.equals(fk)) {
+                            if (uncalculatedEnemyBlock.getG() > fk.getG()) {
+                                uncalculatedEnemyBlock.setG(fk.getG());
+                                uncalculatedEnemyBlock.setF(uncalculatedEnemyBlock.getG() + uncalculatedEnemyBlock.getH());
+                                uncalculatedEnemyBlock.setPreviousFK(fk.getPreviousFK());
                                 break;
                             }
                         }
@@ -144,8 +141,6 @@ public class AutoFindWay {
 
 
         }
-        
-        System.out.println("way list is " + waitList.size() );
         return waitList;
     }
 
