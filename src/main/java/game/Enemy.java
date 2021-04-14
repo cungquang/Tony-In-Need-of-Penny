@@ -22,7 +22,7 @@ public class Enemy extends activeObj{
     public void draw(Graphics g){
         //g.setColor(Color.GREEN);
         //g.fillOval(this.getdX() * 25 + 8, this.getdY() * 25 + 8,11,11);
-        Image imageIcon = new ImageIcon("src\\main\\java\\game\\virous.gif").getImage();
+        Image imageIcon = new ImageIcon("src/main/java/game/virous.gif").getImage();
         g.drawImage(imageIcon, this.getdX()*25, this.getdY()*25, 25, 25, null);
     }
 

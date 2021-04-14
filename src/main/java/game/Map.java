@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.*;
 import javax.swing.plaf.TextUI;
-;
 
 /**
  * Map class: creates and draws the map
