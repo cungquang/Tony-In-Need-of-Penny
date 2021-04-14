@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import game.*;
 import game.Character;
 import game.enemy_tools.AutoFindWay;
-import game.enemy_tools.Eneposition;
+import game.enemy_tools.EnemyBlock;
 
 import java.lang.Math;
 
@@ -22,7 +22,7 @@ public class EnemyTest {
     } 
     private int applyAutofindway(int distX, int distY, int localX, int localY) {
         AutoFindWay AFW = new AutoFindWay();
-        List<Eneposition> path = new ArrayList<>();
+        List<EnemyBlock> path = new ArrayList<>();
 
         path = AFW.getWayLine(distX, distY, localX, localY);
         return (path.size() - 1);//the distance include the one more end point because of the algorithm's checking;

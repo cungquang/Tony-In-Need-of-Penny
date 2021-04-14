@@ -6,7 +6,7 @@ import java.util.List;
 import java.lang.*;
 
 import game.*;
-import game.enemy_tools.Eneposition;
+import game.enemy_tools.EnemyBlock;
 /**
  * zhangailist : The walls in enemy's minds; so that enemy can find the way:
  * Eneposition : Enemy's way to record the message of the path and the wall
@@ -14,11 +14,11 @@ import game.enemy_tools.Eneposition;
  * Openlist : list list of queue wait to be calcualted
  */
 public class AutoFindWay {
-    public static Eneposition beginEne = null;
-    public static Eneposition endEne = null;
-    public List<Eneposition> wallList = new ArrayList<>();
-    public List<Eneposition> calutaledList = new ArrayList<>();
-    public List<Eneposition> uncalculatedList = new ArrayList<>();
+    public static EnemyBlock beginEne = null;
+    public static EnemyBlock endEne = null;
+    public List<EnemyBlock> wallList = new ArrayList<>();
+    public List<EnemyBlock> calutaledList = new ArrayList<>();
+    public List<EnemyBlock> uncalculatedList = new ArrayList<>();
 
     private static int[][] maze = {
         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -53,7 +53,7 @@ public class AutoFindWay {
 				if (maze[i][j]== 1) {
 					int y = i;
 					int x = j;
-                    Eneposition wall = new Eneposition(x, y);
+                    EnemyBlock wall = new EnemyBlock(x, y);
 					wallList.add(wall);
 				} 
 			}
@@ -63,12 +63,12 @@ public class AutoFindWay {
     /** 
      * waitlist: the path of optimized the path to get the target
     */
-    public List<Eneposition> getWayLine(int distX, int distY, int localX, int localY) {
-        List<Eneposition> waitList = new ArrayList<>();
-        List<Eneposition> tempList = null;
-        beginEne = new Eneposition(localX,localY);
+    public List<EnemyBlock> getWayLine(int distX, int distY, int localX, int localY) {
+        List<EnemyBlock> waitList = new ArrayList<>();
+        List<EnemyBlock> tempList = null;
+        beginEne = new EnemyBlock(localX,localY);
         beginEne.setG(0);
-        endEne = new Eneposition(distX, distY);
+        endEne = new EnemyBlock(distX, distY);
 
         tempList = getAroudBlock(beginEne);
         if (tempList == null || tempList.size() == 0) {
@@ -79,13 +79,13 @@ public class AutoFindWay {
         //calculate the F G and  H in astar in the open list
         for (int i = 0; i < uncalculatedList.size(); i++) {
 
-            Eneposition temp = uncalculatedList.get(i);
+            EnemyBlock temp = uncalculatedList.get(i);
             tempList = getAroudBlock(temp);
             if (tempList == null || tempList.size() == 0) {
                 continue;
             }
             if (tempList.contains(endEne)) {
-                for (Eneposition obj : tempList) {
+                for (EnemyBlock obj : tempList) {
                     if (obj.equals(endEne)) {
                         calutaledList.add(obj);
                         break;
@@ -94,11 +94,11 @@ public class AutoFindWay {
                 break;
 
             }
-            for (Eneposition fk : tempList) {
+            for (EnemyBlock fk : tempList) {
                 if (uncalculatedList.contains(fk)) {
 
 
-                    for (Eneposition openFk : uncalculatedList) {
+                    for (EnemyBlock openFk : uncalculatedList) {
                         if (openFk.equals(fk)) {
                             if (openFk.getG() > fk.getG()) {
                                 openFk.setG(fk.getG());
@@ -155,31 +155,31 @@ public class AutoFindWay {
     // from one block , get the other block around
     // if the around is wall, then resist  it from the open list
 
-    public List<Eneposition> getAroudBlock(Eneposition Enemy) {
-        List<Eneposition> aroundList = new ArrayList<Eneposition>();
+    public List<EnemyBlock> getAroudBlock(EnemyBlock Enemy) {
+        List<EnemyBlock> aroundList = new ArrayList<EnemyBlock>();
         if (Enemy.getY() - 1 >= 0) {
 
-            Eneposition tempPoistion = new Eneposition(Enemy.getX(), Enemy.getY() - 1, Enemy);
+            EnemyBlock tempPoistion = new EnemyBlock(Enemy.getX(), Enemy.getY() - 1, Enemy);
             if (!wallList.contains(tempPoistion) && !calutaledList.contains(tempPoistion)) {
                 aroundList.add(tempPoistion);
             }
         }
 
         if (Enemy.getY() + 1 <= 20) {
-            Eneposition tempPoistion = new Eneposition(Enemy.getX(), Enemy.getY() + 1, Enemy);
+            EnemyBlock tempPoistion = new EnemyBlock(Enemy.getX(), Enemy.getY() + 1, Enemy);
             if (!wallList.contains(tempPoistion) && !calutaledList.contains(tempPoistion)) {
                 aroundList.add(tempPoistion);
             }
         }
 
         if (Enemy.getX() - 1 >= 0) {
-            Eneposition tempPoistion = new Eneposition(Enemy.getX()-1, Enemy.getY(), Enemy);
+            EnemyBlock tempPoistion = new EnemyBlock(Enemy.getX()-1, Enemy.getY(), Enemy);
             if (!wallList.contains(tempPoistion) && !calutaledList.contains(tempPoistion)) {
                 aroundList.add(tempPoistion);
             }
         }
         if (Enemy.getX() + 1 <= 20) {
-            Eneposition tempPoistion = new Eneposition(Enemy.getX()+1, Enemy.getY(), Enemy);
+            EnemyBlock tempPoistion = new EnemyBlock(Enemy.getX()+1, Enemy.getY(), Enemy);
             if (!wallList.contains(tempPoistion) && !calutaledList.contains(tempPoistion)) {
                 aroundList.add(tempPoistion);
             }
@@ -190,9 +190,9 @@ public class AutoFindWay {
     }
 
     // get F G and H in astar algorithm
-    public void getFGH(List<Eneposition> list, Eneposition currFk) {
+    public void getFGH(List<EnemyBlock> list, EnemyBlock currFk) {
         if (list != null && list.size() > 0) {
-            for (Eneposition fk : list) {
+            for (EnemyBlock fk : list) {
                 fk.setG(currFk.getG() + 1);
                 fk.setH(toGetH(fk, endEne));
                 fk.setF(fk.getG() + fk.getH());
@@ -200,7 +200,7 @@ public class AutoFindWay {
         }
     }
 
-    public int toGetH(Eneposition currentEne, Eneposition targetEne) {
+    public int toGetH(EnemyBlock currentEne, EnemyBlock targetEne) {
         int h = 0;
         h += Math.abs(currentEne.getX() - targetEne.getX());
         h += Math.abs(currentEne.getY() - targetEne.getY());

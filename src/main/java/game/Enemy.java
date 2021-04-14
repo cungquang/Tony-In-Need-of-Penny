@@ -7,7 +7,7 @@ import java.awt.*;
 import javax.swing.ImageIcon;
 
 import game.enemy_tools.AutoFindWay;
-import game.enemy_tools.Eneposition;
+import game.enemy_tools.EnemyBlock;
 import game.enemy_tools.punishment;
 
 
@@ -17,7 +17,7 @@ import game.enemy_tools.punishment;
  * Move enemy: apply the autofindway to find the optimized way to get close to the player
  */
 public class Enemy extends activeObj{
-    private List<Eneposition> wayList;
+    private List<EnemyBlock> wayList;
 
     public Enemy(Map m, int x, int y){
         this.setdX(x);
@@ -45,7 +45,7 @@ public class Enemy extends activeObj{
             AutoFindWay afw = new AutoFindWay();
             wayList = afw.getWayLine(distanceX, distanceY, localX, localY);
             
-            Eneposition fk = wayList.get(wayList.size()-2);
+            EnemyBlock fk = wayList.get(wayList.size()-2);
             //System.out.println(distanceX+"+"+distanceY+"+"+localX+"+"+localY);
 			// up
 			if (this.getdY() > fk.getY()) {

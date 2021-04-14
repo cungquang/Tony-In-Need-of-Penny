@@ -1,15 +1,15 @@
 package game.enemy_tools;
 
 
-public class Eneposition {
-    public Eneposition(){}
+public class EnemyBlock {
+    public EnemyBlock(){}
 
-    public Eneposition(int x,int y){
+    public EnemyBlock(int x,int y){
 		this.x = x;
 		this.y = y;
     }
     
-    public Eneposition(int x,int y, Eneposition fk){
+    public EnemyBlock(int x,int y, EnemyBlock fk){
 		this.x = x;
 		this.y = y;
 		this.previousFK = fk;
@@ -22,7 +22,7 @@ public class Eneposition {
 	private int F;
 	private int G;
 	private int H;
-	private Eneposition previousFK;
+	private EnemyBlock previousFK;
 	public int getF() {
 		return F;
 	}
@@ -41,16 +41,16 @@ public class Eneposition {
 	public void setH(int h) {
 		H = h;
 	}
-	public Eneposition getPreviousFK() {
+	public EnemyBlock getPreviousFK() {
 		return previousFK;
 	}
-	public void setPreviousFK(Eneposition previousFK) {
+	public void setPreviousFK(EnemyBlock previousFK) {
 		this.previousFK = previousFK;
     }
     
     @Override
 	public boolean equals(Object obj) {
-		if(((Eneposition)obj).getX() == this.x && ((Eneposition)obj).getY() == this.y){
+		if(((EnemyBlock)obj).getX() == this.x && ((EnemyBlock)obj).getY() == this.y){
 			return true;
 		}else{
 			return false;
