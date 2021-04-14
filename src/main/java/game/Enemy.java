@@ -1,7 +1,10 @@
 package game;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.ImageObserver;
 import java.util.List;
+import java.awt.*;
+import javax.swing.ImageIcon;
 
 import game.enemy_tools.AutiFindWay;
 import game.enemy_tools.Eneposition;
@@ -22,8 +25,10 @@ public class Enemy extends activeObj{
     }
 
     public void draw(Graphics g){
-        g.setColor(Color.GREEN);
-        g.fillOval(this.getdX() * 25 + 8, this.getdY() * 25 + 8,11,11);
+        //g.setColor(Color.GREEN);
+        //g.fillOval(this.getdX() * 25 + 8, this.getdY() * 25 + 8,11,11);
+        Image imageIcon = new ImageIcon("src\\main\\java\\game\\enemy_tools\\virous.gif").getImage();
+        g.drawImage(imageIcon, this.getdX()*25, this.getdY()*25, 25, 25, null);
     }
 
     public void move_enemy(Character ch){

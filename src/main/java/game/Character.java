@@ -2,6 +2,8 @@ package game;
 
 import java.awt.*;
 
+import javax.swing.ImageIcon;
+
 import game.Map;
 import game.Wall;
 
@@ -74,8 +76,10 @@ public class Character extends activeObj {
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.red);
-        g.fillOval(this.getdX() * 25 + 8, this.getdY() * 25 + 8,11,11);
+        //g.setColor(Color.red);
+        //g.fillOval(this.getdX() * 25 + 8, this.getdY() * 25 + 8,11,11);
+        Image imageIcon = new ImageIcon("src\\main\\java\\game\\Character.gif").getImage();
+        g.drawImage(imageIcon, this.getdX()*25, this.getdY()*25, 25, 25, null);
     }
 
     //Bonus and Prize Checking method
