@@ -6,7 +6,7 @@ import game.Wall;
 public class WallTest {
     @Test
     public void testGetMaze() {
-        Wall wallObj = new Wall(500, 550, 25, 20);
+        Wall wallObj = new Wall(25);
 
         int[][] map = wallObj.getMaze();
         int[][] testMap = {
@@ -43,10 +43,21 @@ public class WallTest {
 
     @Test
     public void testGetLocation() {
-        Wall wallObj = new Wall(500, 550, 25, 20);
+        Wall wallObj = new Wall(25);
+
+        int item = wallObj.getLocation(0, 0);
+
+        assertEquals(1, item);
+    }
+
+    @Test
+    public void testSetLocation() {
+        Wall wallObj = new Wall(25);
+
+        wallObj.setLocation(0, 3, 5);
 
         int item = wallObj.getLocation(0, 3);
 
-        assertEquals(1, item);
+        assertEquals(5, item);
     }
 }

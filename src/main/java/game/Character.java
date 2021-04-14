@@ -68,8 +68,8 @@ public class Character extends activeObj {
 
     public void ResetPosition()
     {
-        MC.ReSetX(1);
-        MC.ReSetY(6);
+        MC.resetX(1);
+        MC.resetY(6);
         MC.Reward_Score = 0;
         MC.Bonus_Score = 0;
         MC.IsAlive = true;

@@ -33,12 +33,12 @@ public class EnemyTest {
     public void testEnemyCatching(){
         Map m = new Map();
         Character ch = Character.getInstance(m);
-        ch.ReSetX(1);
-        ch.ReSetY(6);
+        ch.resetX(1);
+        ch.resetY(6);
         Enemy ene = new Enemy(m, 1, 1);
         System.out.println(" distance form the enemy can charater is 5, it need 5 steps to got to the character");
         for(int i = 0;i<5;i++){
-            ene.move_Enemy(ch);
+            ene.moveEnemy(ch);
             System.out.println(ch.getdX()+"+"+ch.getdY()+"+"+ene.getdX()+"+"+ene.getdY());
         }
         assertEquals(ch.getdX(), ene.getdX());

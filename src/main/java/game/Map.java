@@ -27,7 +27,7 @@ import javax.swing.plaf.TextUI;
 public class Map extends JPanel {
     private Font miniFont = new Font("SansSerif", Font.BOLD, 15);
     private punishment Punishment = new punishment();
-    private Wall wall = new Wall(MAP_WIDTH, MAP_HEIGHT, BLOCK_SIZE, NUM_BLOCKS);
+    private Wall wall = new Wall(BLOCK_SIZE);
     private Character player = Character.getInstance(this);
     private WinMessage winning = new WinMessage();
     
@@ -46,9 +46,6 @@ public class Map extends JPanel {
 
 
     public final static int BLOCK_SIZE = 25;
-    public final static int NUM_BLOCKS = 20;
-    public static final int MAP_WIDTH = BLOCK_SIZE * NUM_BLOCKS;
-    public static final int MAP_HEIGHT = MAP_WIDTH + 50;
 
     private Enemy enemy1 = new Enemy(this, 10, 11);
     private Enemy enemy2 = new Enemy(this, 1, 19);
@@ -62,8 +59,8 @@ public class Map extends JPanel {
 
         //add Prizes
         prizefactory = new PrizeFactory(wall,PRIZEVALUE);
-        bonus = prizefactory.GetBonusArray();
-        reward = prizefactory.GetRewardArray();
+        bonus = prizefactory.getBonusArray();
+        reward = prizefactory.getRewardArray();
         
         Timer timer = new Timer(INTERVAL, new ActionListener(){
             public void actionPerformed(ActionEvent e) {
@@ -86,11 +83,11 @@ public class Map extends JPanel {
                 } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
                     i = player.move('d');
                 }
-                if(i == 0){enemy1.move_Enemy(player);
-                           enemy2.move_Enemy(player);
-                           //enemy3.move_enemy(player);
-                           //enemy4.move_enemy(player);
-                           //enemy5.move_enemy(player);
+                if(i == 0){enemy1.moveEnemy(player);
+                           enemy2.moveEnemy(player);
+                           //enemy3.moveEnemy(player);
+                           //enemy4.moveEnemy(player);
+                           //enemy5.moveEnemy(player);
                         }  
             }
         });
@@ -101,8 +98,8 @@ public class Map extends JPanel {
         wall.reset();
         prizefactory = new PrizeFactory(wall,PRIZEVALUE);
         player.ResetPosition();
-        bonus = prizefactory.GetBonusArray();
-        reward = prizefactory.GetRewardArray();
+        bonus = prizefactory.getBonusArray();
+        reward = prizefactory.getRewardArray();
         enemy1 = null;
         enemy2 = null;
         enemy1 = new Enemy(this, 10, 11);
@@ -166,14 +163,14 @@ public class Map extends JPanel {
         player.IsPrize();
 
         //Draw Bonus Object:
-        for(int i = 0; i < prizefactory.NoOfBonus(); i++){
+        for(int i = 0; i < prizefactory.noOfBonus(); i++){
             if(bonus[i].getStatus()){
                 bonus[i].draw(g,BLOCK_SIZE);
             }
         }
 
         //Draw Reward Object:
-        for(int i = 0; i < prizefactory.NoOfReward(); i++){
+        for(int i = 0; i < prizefactory.noOfReward(); i++){
             if(reward[i].getStatus()){
                 reward[i].draw(g,BLOCK_SIZE);
             }

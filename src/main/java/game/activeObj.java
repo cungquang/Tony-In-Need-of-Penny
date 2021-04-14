@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 /**
  *	Abstract class:
-        -private int Character_dx, Character_dy     :indicate the position on Map level
+        -private int characterDx, characterDy     :indicate the position on Map level
  *	method:
  *      -getdX()    :return the Character's X-coordinate
  *      -getdY()    :return the Character's Y-coordinate
@@ -17,32 +17,32 @@ import java.awt.event.KeyEvent;
 
 
 class activeObj extends KeyAdapter {
-    private int Character_dx, Character_dy;
+    private int characterDx, characterDy;
 
     public int getdX() {
-        return Character_dx;
+        return characterDx;
     }
 
     public int getdY() {
-        return Character_dy;
+        return characterDy;
     }
 
-    public void ReSetX(int x)
+    public void resetX(int x)
     {
-        Character_dx = x;
+        characterDx = x;
     }
 
-    public void ReSetY(int y)
+    public void resetY(int y)
     {
-        Character_dy = y;
+        characterDy = y;
     }    
 
     public void setdX(int x) {
-        Character_dx += x;
+        characterDx += x;
     }
 
     public void setdY(int y) {
-        Character_dy += y;
+        characterDy += y;
     }
 }
 

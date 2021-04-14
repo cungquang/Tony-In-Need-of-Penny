@@ -27,7 +27,7 @@ public class PrizeFactory{
 		this.bonustype = PrizeType.bonus;
 		this.rewardtype = PrizeType.reward;
 		this.PRIZE_VALUE = prizevalue;
-		this.CountPrize();
+		this.countPrize();
 	}
 
 	/*
@@ -50,11 +50,11 @@ public class PrizeFactory{
 
     /*-----------------------------------Reward & Bonus Object-----------------------------------*/
     /*
-    CountPrize()
+    countPrize()
     pre-cond: none
     post-cond: count number of [Bonus] and [Reward] on the maze
     */
-    private void CountPrize(){
+    private void countPrize(){
 
         for(int i = 0; i < maze.length; i++) {
             for(int j = 0; j < maze[0].length; j++) {
@@ -72,30 +72,30 @@ public class PrizeFactory{
     }
 
     /*
-    NoOfBonus():
+    noOfBonus():
     Pre-cond: none
     Post-cond: return number of [Bonus] object
     */
-    public int NoOfBonus(){
+    public int noOfBonus(){
         return this.Num_Bonus;
     }
 
     /*
-    NoOfBonus():
+    noOfBonus():
     Pre-cond: none
     Post-cond: return number of [Bonus] object
     */
-    public int NoOfReward(){
+    public int noOfReward(){
         return this.Num_Reward;
     }
 
 
 	/*
-    GetBonusArray()
+    getBonusArray()
     Pre-cond: none
     Post-cond: return an array of Bonus object
     */
-    public Prize[] GetBonusArray(){
+    public Prize[] getBonusArray(){
         Prize[] bonusArr = new Prize[this.Num_Bonus];
         int BIndex = 0;
 
@@ -113,11 +113,11 @@ public class PrizeFactory{
 
 
     /*
-    GetRewardArray()
+    getRewardArray()
     Pre-cond: none
     Post-cond: return an array of Reward object
     */
-    public Prize[] GetRewardArray(){
+    public Prize[] getRewardArray(){
         Prize[] rewardArr = new Prize[this.Num_Reward];
         int RIndex = 0;
 

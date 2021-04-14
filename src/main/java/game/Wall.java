@@ -5,7 +5,8 @@ import java.awt.*;
 /**
  * Wall class: stores the location of the walls on the map
  * 
- * - int[][] maze: contains the map data.
+ * - int blockDimension:    # of pixels for each block
+ * - int[][] maze:          contains the map data.
  * 
  * methods:
  * + Wall():        instantiates basic properties of the map
@@ -15,14 +16,7 @@ import java.awt.*;
  * + getLocation(): returns the item at the given location
  */
 public class Wall {
-    private static int blockDimension;
-    private static int numBlocks;
-    private static final int SIZE = blockDimension * numBlocks;
-
-    private int px; 
-    private int py;
-    private int width;
-    private int height;
+    private int blockDimension;
 
     private static int[][] maze = {
         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -52,13 +46,8 @@ public class Wall {
     /*-----------------------------------Reward & Bonus Object-----------------------------------*/
 
 
-    public Wall(int mapWidth, int mapHeight, int blockSize, int numBlocks) {
-        px = 0;
-        py = 0;
-        width = mapWidth;
-        height = mapHeight;
-        blockDimension = blockSize;
-        numBlocks = numBlocks;
+    public Wall(int blockSize) {
+        this.blockDimension = blockSize;
     }
 
     public void draw(Graphics g) {

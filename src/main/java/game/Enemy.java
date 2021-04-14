@@ -26,7 +26,7 @@ public class Enemy extends activeObj{
         g.drawImage(imageIcon, this.getdX()*25, this.getdY()*25, 25, 25, null);
     }
 
-    public void move_Enemy(Character ch){
+    public void moveEnemy(Character ch){
         int distanceX = ch.getdX();
         int distanceY = ch.getdY();
         int localX = this.getdX();
