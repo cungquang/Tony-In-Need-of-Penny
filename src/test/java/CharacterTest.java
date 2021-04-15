@@ -63,11 +63,13 @@ class CharacterTest {
 
         //wall collision
         //go left (there is a wall at left)
+        //test_X will not change 
         MC.move('l');
         assertEquals(test_X,MC.getdX());
 
         //go right (there is a wall at right)
-        MC.move('d');
+        //test_X will not change
+        MC.move('r');
         assertEquals(test_X,MC.getdX());
     }
 }
