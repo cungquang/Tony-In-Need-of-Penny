@@ -39,7 +39,7 @@ public class EnemyTest {
         System.out.println(" distance form the enemy can charater is 5, it need 5 steps to got to the character");
         for(int i = 0;i<5;i++){
             ene.moveEnemy(ch);
-            System.out.println(ch.getdX()+"+"+ch.getdY()+"+"+ene.getdX()+"+"+ene.getdY());
+            //System.out.println(ch.getdX()+"+"+ch.getdY()+"+"+ene.getdX()+"+"+ene.getdY());
         }
         assertEquals(ch.getdX(), ene.getdX());
         assertEquals(ch.getdY(), ene.getdY());
