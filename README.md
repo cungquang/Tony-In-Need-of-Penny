@@ -20,14 +20,10 @@ mvn package
 for test: mvn test
 
 
-
-
 ----------------------------------------------------------Execute Game Instruction----------------------------------------------------------------
 
 #command to execute the game:
 command: java -cp target/Game-1.0-SNAPSHOT.jar game.Game
-
-
 
 
 ------------------------------------------------------------GamePlay Instruction------------------------------------------------------------------
