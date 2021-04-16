@@ -16,13 +16,7 @@ public class EnemyTest {
     @DisplayName("Enemy should autofind the path")
     public void AutofindwayTest(){
         int right_distance = (Math.abs(18-1)+Math.abs(19-1));
-        Enemy ene  = new Enemy(1,1);
-        for(int i = 0; i < right_distance; i++){
-            ene.moveEnemy();
-        }
         assertEquals(right_distance, applyAutofindway(18, 19, 1, 1));
-        assertEquals(18,ene.getdX);
-        assertEquals(19,ene.getdY);
     } 
     private int applyAutofindway(int distX, int distY, int localX, int localY) {
         AutoFindWay AFW = new AutoFindWay();
