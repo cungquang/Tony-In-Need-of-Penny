@@ -9,7 +9,7 @@ import game.Wall;
 import game.PrizeFactory;
 import game.Prize;
 
-class PrizeFactoryTest {
+public class PrizeFactoryTest {
     private int value_Test;
     private Wall wall = new Wall(BLOCK_SIZE);
 
@@ -25,7 +25,7 @@ class PrizeFactoryTest {
     private final int PRIZEVALUE = 5;
 
     @BeforeEach
-    public void setUp(Wall wall, int value){
+    public void setUp(){
         testCreate();
     }
 
