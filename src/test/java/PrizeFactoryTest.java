@@ -26,10 +26,7 @@ class PrizeFactoryTest {
 
     @BeforeEach
     public void setUp(Wall wall, int value){
-        System.out.println("Running PrizeTest");
         testCreate();
-        testPosition();
-        testValues();
     }
 
 
@@ -39,8 +36,8 @@ class PrizeFactoryTest {
         factory_Test = new PrizeFactory(wall, PRIZEVALUE);
 
         //Create array of reward and bonus
-        reward_Test = factory_Test.getBonusArray();
-        bonus_Test = factory_Test.getRewardArray();
+        bonus_Test = factory_Test.getBonusArray();
+        reward_Test = factory_Test.getRewardArray();
     }
 
     @Test 
