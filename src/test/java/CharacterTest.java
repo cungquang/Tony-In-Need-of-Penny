@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import game.Map;
 import game.Character;
-class CharacterTest {
+public class CharacterTest {
     private Map m;
     private Character MC;
 
