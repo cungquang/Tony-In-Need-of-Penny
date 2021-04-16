@@ -1,0 +1,12 @@
+# Build Instructions:
+
+First build the project using maven:
+`mvn package`
+
+To run the game use the following java command:
+`java -cp target/Game-1.0-SNAPSHOT.jar game.Game`
+
+# Test Instructions:
+
+To run the tests run the following maven command:
+`mvn test`
