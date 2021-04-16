@@ -6,23 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import game.Map;
-import game.Character;
+import game.*;
 
 public class CharacterTest {
-    private Map m;
-    private Character MC;
-
-    @BeforeEach
-    public void setUp() throws Exception
-    {
-        Map m = new Map();
-        MC = Character.getInstance(m);
-    }
-
-
     @Test
     public void testGetBonusScore() {
+        Map m = new Map();
+        m.reset();
+        Character MC = Character.getInstance(m);
         MC.ResetPosition();
         for(int i=0;i<5;i++)
         {
@@ -38,6 +29,9 @@ public class CharacterTest {
 
     @Test
     public void testResetPosition() {
+        Map m = new Map();
+        m.reset();
+        Character MC = Character.getInstance(m);
         MC.ResetPosition();
         assertEquals(1,MC.getdX());
         assertEquals(6,MC.getdY());
@@ -49,6 +43,9 @@ public class CharacterTest {
     @Test
     @DisplayName("Player will move if it got direction order expect there is a wall")
     public void testMove() {
+        Map m = new Map();
+        m.reset();
+        Character MC = Character.getInstance(m);
         MC.ResetPosition();
         int test_X =1, test_Y=6;
         //No wall collision
