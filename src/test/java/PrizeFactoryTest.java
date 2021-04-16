@@ -31,7 +31,7 @@ public class PrizeFactoryTest {
 
 
     @Test
-    void testCreate(){
+    public void testCreate(){
         //object factory to create
         factory_Test = new PrizeFactory(wall, PRIZEVALUE);
 
@@ -41,7 +41,7 @@ public class PrizeFactoryTest {
     }
 
     @Test 
-    void testPosition(){
+    public void testPosition(){
         int valueOnMaze;
 
         //check the reward position:
@@ -58,7 +58,7 @@ public class PrizeFactoryTest {
     }   
 
     @Test 
-    void testValues(){
+    public void testValues(){
         //check the reward position:
         for(int i = 0; i < factory_Test.noOfReward(); i++){  
             assertEquals(reward_Test[i].getValue(), PRIZEVALUE);
@@ -71,15 +71,15 @@ public class PrizeFactoryTest {
     }   
 
     @Test 
-    void testStatus(){
+    public void testStatus(){
         //check the reward position:
         for(int i = 0; i < factory_Test.noOfReward(); i++){  
-            assertEquals(reward_Test[i].getStatus(), 1);
+            assertEquals(reward_Test[i].getStatus(), true);
         }
 
         //check the bonus position:
         for(int i = 0; i < factory_Test.noOfBonus(); i++){  
-            assertEquals(bonus_Test[i].getStatus(), 1);
+            assertEquals(bonus_Test[i].getStatus(), true);
         }
     }   
 
