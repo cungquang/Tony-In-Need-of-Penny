@@ -1,4 +1,4 @@
-//package game;
+package game;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import game.Map;
 import game.Character;
+
 public class CharacterTest {
     private Map m;
     private Character MC;
@@ -21,8 +22,7 @@ public class CharacterTest {
 
 
     @Test
-    @DisplayName("Player should get Bonus Score when he meets a Prize")
-    void Test_getBonus_Score() {
+    public void testGetBonusScore() {
         MC.ResetPosition();
         for(int i=0;i<5;i++)
         {
@@ -37,7 +37,7 @@ public class CharacterTest {
     }
 
     @Test
-    void Test_resetPosition() {
+    public void testResetPosition() {
         MC.ResetPosition();
         assertEquals(1,MC.getdX());
         assertEquals(6,MC.getdY());
@@ -48,7 +48,7 @@ public class CharacterTest {
 
     @Test
     @DisplayName("Player will move if it got direction order expect there is a wall")
-    void Test_move() {
+    public void testMove() {
         MC.ResetPosition();
         int test_X =1, test_Y=6;
         //No wall collision
