@@ -4,60 +4,87 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import game.Wall;
 import game.PrizeFactory;
 import game.Prize;
 
 class PrizeFactoryTest {
     private int value_Test;
-    private Wall wall_Test;
+    private Wall wall = new Wall(BLOCK_SIZE);
 
-    private PrizeType type1 = PrizeType.reward;
-    private PrizeType type2 = PrizeType.bonus;
+    private PrizeType type1 = PrizeType.reward;     //type of prize - reward
+    private PrizeType type2 = PrizeType.bonus;      //type of prize - bonus
 
-    private Prize bonus_Test[];
-    private Prize reward_Test[];
+    private Prize bonus_Test[];                     //array of bonus
+    private Prize reward_Test[];                    //array of reward
 
-    private PrizeFactory factory_Test;
+    private PrizeFactory factory_Test;              //prize factory
 
+    private final static int BLOCK_SIZE = 25;
+    private final int PRIZEVALUE = 5;
 
     @BeforeEach
     public void setUp(Wall wall, int value){
-        factory_Test = new PrizeFactory(wall,value);
+        System.out.println("Running PrizeTest");
+        testCreate();
+        testPosition();
+        testValues();
     }
 
+
     @Test
-    void runTest(){
+    void testCreate(){
         //object factory to create
-        factory_Test = new PrizeFactory(this.wall_Test, this.value_Test);
+        factory_Test = new PrizeFactory(wall, PRIZEVALUE);
 
         //Create array of reward and bonus
         reward_Test = factory_Test.getBonusArray();
         bonus_Test = factory_Test.getRewardArray();
-
-        //Reward array:
-        System.out.println("-----------------------------------------------------");
-        System.out.println("List of Reward:");
-        for(int i = 0; i < factory_Test.noOfBonus(); i++){
-            System.out.println("Identity No: " + reward_Test.getNbr());
-            System.out.println("x-coordinate: " + reward_Test.getPosition()[0]);
-            System.out.println("y-coordinate: " + reward_Test.getPosition()[1]);
-            System.out.println("Value of Reward: " + reward_Test.getValue());
-            System.out.println("Status of Reward: " + reward_Test.getStatus());
-            System.out.println("-----------------------------------------------------");
-        }
-
-        //Bonus array:
-        System.out.println("-----------------------------------------------------");
-        System.out.println("List of Bonus:");
-        for(int i = 0; i < factory_Test.noOfReward(); i++){
-            System.out.println("Identity No: " + reward_Test.getNbr());
-            System.out.println("x-coordinate: " + reward_Test.getPosition()[0]);
-            System.out.println("y-coordinate: " + reward_Test.getPosition()[1]);
-            System.out.println("Value of Reward: " + reward_Test.getValue());
-            System.out.println("Status of Reward: " + reward_Test.getStatus());
-            System.out.println("-----------------------------------------------------");
-        }
     }
+
+    @Test 
+    void testPosition(){
+        int valueOnMaze;
+
+        //check the reward position:
+        for(int i = 0; i < factory_Test.noOfReward(); i++){  
+            valueOnMaze = wall.getLocation(reward_Test[i].getPosition()[0], reward_Test[i].getPosition()[1]);
+            assertEquals(valueOnMaze, 2);
+        }
+
+        //check the bonus position:
+        for(int i = 0; i < factory_Test.noOfBonus(); i++){  
+            valueOnMaze = wall.getLocation(bonus_Test[i].getPosition()[0], bonus_Test[i].getPosition()[1]);
+            assertEquals(valueOnMaze, 3);
+        }
+    }   
+
+    @Test 
+    void testValues(){
+        //check the reward position:
+        for(int i = 0; i < factory_Test.noOfReward(); i++){  
+            assertEquals(reward_Test[i].getValue(), PRIZEVALUE);
+        }
+
+        //check the bonus position:
+        for(int i = 0; i < factory_Test.noOfBonus(); i++){  
+            assertEquals(bonus_Test[i].getValue(), PRIZEVALUE*2);
+        }
+    }   
+
+    @Test 
+    void testStatus(){
+        //check the reward position:
+        for(int i = 0; i < factory_Test.noOfReward(); i++){  
+            assertEquals(reward_Test[i].getStatus(), 1);
+        }
+
+        //check the bonus position:
+        for(int i = 0; i < factory_Test.noOfBonus(); i++){  
+            assertEquals(bonus_Test[i].getStatus(), 1);
+        }
+    }   
 
 
 }
