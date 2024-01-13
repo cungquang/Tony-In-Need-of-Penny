@@ -5,16 +5,23 @@
 #################################################################
 
 ---------------------------------------------------------- Project Description ----------------------------------------------------------------
+
 Description:
+
 	The project is for educational purpose. The project focuses on building a desktop game in Java and using Maven - software management tool. 
  	The main character of this game named "Tony", he is a poor student in need of money to pay for his tuition for the upcoming semester. 
   	However, there are many "gangster" who want to rob him, so he needs to avoid enemies to protect his earning.
+   
 Purpose: Educational purpose
+
 Target Audience: Everyone
+
 Hosting: Not Application
+
 Tech stack:
 	- Java
  	- Maven
+  
 ----------------------------------------------------------Compile Game Instruction----------------------------------------------------------------
 
 #command to compile/build the game:
