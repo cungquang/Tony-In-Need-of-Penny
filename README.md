@@ -2,8 +2,6 @@
 #			Game: Tony In Needs of Pennies - TIP		#
 #			Genere: Maze arcade				#
 #			Platform: Java					#
-#			Developers:					#
-#				Hong Quang Cung				#
 #########################################################################
 
 ----------------------------------------------------------Compile Game Instruction----------------------------------------------------------------
