@@ -1,11 +1,20 @@
-#################################################################														#
+#################################################################
 #	Project Name: Tony In Needs of Pennies - TIP		#
 #	Genere: Maze arcade					#
-#	Platform: Java - Maven					#
+#	Language: Java - Maven					#
 #################################################################
 
 ---------------------------------------------------------- Project Description ----------------------------------------------------------------
-
+Description:
+	The project is for educational purpose. The project focuses on building a desktop game in Java and using Maven - software management tool. 
+ 	The main character of this game named "Tony", he is a poor student in need of money to pay for his tuition for the upcoming semester. 
+  	However, there are many "gangster" who want to rob him, so he needs to avoid enemies to protect his earning.
+Purpose: Educational purpose
+Target Audience: Everyone
+Hosting: Not Application
+Tech stack:
+	- Java
+ 	- Maven
 ----------------------------------------------------------Compile Game Instruction----------------------------------------------------------------
 
 #command to compile/build the game:
@@ -14,12 +23,10 @@ mvn package
 #command to compile/build the test:
 for test: mvn test
 
-
 ----------------------------------------------------------Execute Game Instruction----------------------------------------------------------------
 
 #command to execute the game:
 command: java -cp target/Game-1.0-SNAPSHOT.jar game.Game
-
 
 ------------------------------------------------------------GamePlay Instruction------------------------------------------------------------------
 
@@ -43,7 +50,7 @@ the game has 4 windows:
 #Gameplay:
 
 ##Control instruction:
-up arrow: 		moving up 
+up arrow: 	moving up 
 down arrow: 	moving down
 left arrow: 	moving left
 right arrow: 	moving right
