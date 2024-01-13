@@ -19,6 +19,7 @@ Target Audience: Everyone
 Hosting: Not Application
 
 Tech stack:
+
 	- Java
  	- Maven
   
