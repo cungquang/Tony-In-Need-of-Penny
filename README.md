@@ -1,77 +1,72 @@
-#################################################################
-#	Project Name: Tony In Needs of Pennies - TIP		#
-#	Genere: Maze arcade					#
-#	Language: Java - Maven					#
-#################################################################
+# Tony In Needs of Pennies - TIP
 
----------------------------------------------------------- Project Description ----------------------------------------------------------------
+## Project Information
 
-Description:
+- **Genre:** Game - Maze arcade
+- **Language:** Java - Maven
 
-	The project is for educational purpose. The project focuses on building a desktop game in Java and using Maven - software management tool. 
- 	The main character of this game named "Tony", he is a poor student in need of money to pay for his tuition for the upcoming semester. 
-  	However, there are many "gangster" who want to rob him, so he needs to avoid enemies to protect his earning.
-   
-Purpose: Educational purpose
+## Project Description
 
-Target Audience: Everyone
+### Description:
 
-Hosting: Not Application
+The project is developed for educational purposes, focusing on building a desktop game in Java and using Maven as the software management tool. The main character, "Tony," is a poor student in need of money to pay for his tuition. However, there are gangsters who want to rob him, so he must avoid enemies to protect his earnings.
 
-Tech stack:
+### Purpose:
 
-	- Java
- 	- Maven
-  
-----------------------------------------------------------Compile Game Instruction----------------------------------------------------------------
+Educational purpose
 
-#command to compile/build the game:
+### Target Audience:
+
+Everyone
+
+### Hosting:
+
+Not applicable
+
+### Tech Stack:
+
+- Java
+- Maven
+
+## Compile Game Instruction
+
+### Command to compile/build the game:
+
+```bash
 mvn package
+Command to compile/build the test:
+bash
+Copy code
+mvn test
+Execute Game Instruction
+Command to execute the game:
+bash
+Copy code
+java -cp target/Game-1.0-SNAPSHOT.jar game.Game
+Gameplay Instruction
+Interface:
+The game consists of four windows:
 
-#command to compile/build the test:
-for test: mvn test
-
-----------------------------------------------------------Execute Game Instruction----------------------------------------------------------------
-
-#command to execute the game:
-command: java -cp target/Game-1.0-SNAPSHOT.jar game.Game
-
-------------------------------------------------------------GamePlay Instruction------------------------------------------------------------------
-
-#Interface:
-the game has 4 windows:
-	- Main Menu: display at the beginning 
-	- Map: display when use select option "START"
-	- Winning Message: display the message when the player win the game. Users have 2 options: play again - "YES" option/exit the game - "NO"
-	- Losing Message: display after the player "touch" enemy. Users have 2 option: play again - "YES"/exit the game - "NO"
-
-#Game Features:
-
-##Features in game:
-- Map - the Maze
-- Main character - Tony: 	Mario picture
-- Moving enemy - Virus:		Flower picture
-- Bonus: 					Big yellow circle
-- Reward: 					Small blue circle	
-- Door: 					Blue square (only appear when player collect enough Reward)
-
-#Gameplay:
-
-##Control instruction:
-up arrow: 	moving up 
-down arrow: 	moving down
-left arrow: 	moving left
-right arrow: 	moving right
-
-##Gameplay instruction:
-- Player will control the main character - Tony to move around the map to collect as much "Prize" as possible:
-	+ Prize will be either "Bonnus" or "Reward"
-	+ Player need a sufficient amount of "Reward" in order to open the Door 
-
-- "Door" will open when player collect enough "Reward":
-	+ Player can decide to enter the "Door" or keep playing
-	+ if Player enter the "Door" the game will end, and the Winning window will open: player can either choose play again/quit
-
-- Enemy will chase the Player if stay in the detection range of the enemy:
-	+ "Tony" has to avoid the enemy
-	+ if "Tony" touch the enemy - player lose the game, and the Losing window will open: player can either choose play again/quit
+Main Menu: displayed at the beginning
+Map: displayed when the user selects the "START" option
+Winning Message: displayed when the player wins the game. Options: Play Again (YES) / Exit the Game (NO)
+Losing Message: displayed after the player touches an enemy. Options: Play Again (YES) / Exit the Game (NO)
+Game Features:
+Features in the game:
+Map - the Maze
+Main character - Tony: Mario picture
+Moving enemy - Virus: Flower picture
+Bonus: Big yellow circle
+Reward: Small blue circle
+Door: Blue square (appears when the player collects enough Reward)
+Gameplay:
+Control instructions:
+Up arrow: move up
+Down arrow: move down
+Left arrow: move left
+Right arrow: move right
+Gameplay instructions:
+The player controls Tony to collect as much "Prize" as possible (either "Bonus" or "Reward").
+A sufficient amount of "Reward" is required to open the "Door."
+The "Door" will open, and the game will end if enough "Reward" is collected. The Winning window will appear, allowing the player to choose to play again or quit.
+Enemies will chase Tony if within their detection range. Tony must avoid enemies, and touching an enemy results in losing the game. The Losing window will open, providing options to play again or quit.
