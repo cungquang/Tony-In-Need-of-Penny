@@ -34,15 +34,18 @@ Not applicable
 
 ```bash
 mvn package
+```
 
 Command to compile/build the test:
 ```bash
 mvn test
+```
 
 Execute Game Instruction
 Command to execute the game:
 ```bash
 java -cp target/Game-1.0-SNAPSHOT.jar game.Game
+```
 
 Gameplay Instruction
 Interface:
