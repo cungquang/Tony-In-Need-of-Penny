@@ -34,19 +34,19 @@ Not applicable
 
 ```bash
 mvn package
+
 Command to compile/build the test:
-bash
-Copy code
+```bash
 mvn test
+
 Execute Game Instruction
 Command to execute the game:
-bash
-Copy code
+```bash
 java -cp target/Game-1.0-SNAPSHOT.jar game.Game
+
 Gameplay Instruction
 Interface:
 The game consists of four windows:
-
 Main Menu: displayed at the beginning
 Map: displayed when the user selects the "START" option
 Winning Message: displayed when the player wins the game. Options: Play Again (YES) / Exit the Game (NO)
